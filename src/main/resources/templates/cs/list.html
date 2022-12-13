@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+  <th:block th:fragment="content">
+    <h1>Shop List Page</h1>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="자주 묻는 질문을 검색하세요" name="email">
+    </div>
+    <h2>자주 묻는 질문(FAQ)을 확인하세요</h2>
+    <div>
+      <img src="templates/shop/img/newyork.jpg" class="rounded-circle" alt="이런 질문">
+      <img src="templates/shop/img/newyork.jpg" class="rounded-circle" alt="저런 질문">
+      <img src="templates/shop/img/newyork.jpg" class="rounded-circle" alt="요런 질문">
+      <img src="templates/shop/img/newyork.jpg" class="rounded-circle" alt="이런 질문">
+      <img src="templates/shop/img/newyork.jpg" class="rounded-circle" alt="저런 질문">
+      <img src="templates/shop/img/newyork.jpg" class="rounded-circle" alt="요런 질문">
+    </div>
+    <h3>해당 카테고리의 자주 묻는 질문입니다</h3>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>예상질문</th>
+            <th>예상질문</th>
+            <th>예상질문</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr>
+           <td>예상답안</td>
+           <td>예상답안</td>
+           <td>예상답안</td>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </div>
+    <h3>1:1 상담하기</h3>
+    <button type="button" class="btn btn-primary">상담하기</button>
+  </th:block>
+
+
+</th:block>
