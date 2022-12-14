@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 
-public class Shop extends BaseEntity{
+public class Cs extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long no;
@@ -25,6 +25,9 @@ public class Shop extends BaseEntity{
 
     @Column(length = 100, nullable = true)
     private String files;
+
+    @Column(length = 100, nullable = true)
+    private String category;
 
     @Column(length = 100, nullable = false)
     private String user_id;

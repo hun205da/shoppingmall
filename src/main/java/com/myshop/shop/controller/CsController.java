@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/shop")
 @Log4j2
-public class ShopController {
+public class CsController {
 
     @GetMapping({"/", "/list"})
     public String list(){
