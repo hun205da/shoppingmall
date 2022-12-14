@@ -15,6 +15,4 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long product_number;
-    @Column(length = 50,nullable = false)
-    private String product_name;
 }
