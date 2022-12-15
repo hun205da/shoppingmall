@@ -1,35 +1,43 @@
 package com.myshop.shop.service;
+
 import com.myshop.shop.dto.CsDTO;
-import com.myshop.shop.dto.CsListPageRequestDTO;
-import com.myshop.shop.dto.CsListPageResultDTO;
+import com.myshop.shop.dto.PageRequestDTO;
+import com.myshop.shop.dto.PageResultDTO;
 import com.myshop.shop.entity.Cs;
-import org.springframework.data.domain.PageRequest;
 
 public interface CsService {
+
     Long register(CsDTO dto);
 
-    CsListPageResultDTO<CsDTO, Cs> getList(CsListPageRequestDTO requestDTO);
+    PageResultDTO<CsDTO, Cs> getList(PageRequestDTO requestDTO);
 
-    default Cs dtoToEntity(CsDTO dto){
+    CsDTO read(Long no);
+
+    void modify(CsDTO dto);
+
+    void remove(Long no);
+
+    default Cs dtoToEntity(CsDTO dto) {
         Cs entity = Cs.builder()
                 .no(dto.getNo())
                 .title(dto.getTitle())
-                .text(dto.getText())
-                .user_id(dto.getUser_id())
+                .content(dto.getContent())
+                .writer(dto.getWriter())
                 .build();
         return entity;
-
     }
 
     default CsDTO entityToDto(Cs entity){
-        CsDTO dto = CsDTO.builder()
+
+        CsDTO dto  = CsDTO.builder()
                 .no(entity.getNo())
                 .title(entity.getTitle())
-                .text(entity.getText())
-                .user_id(entity.getUser_id())
+                .content(entity.getContent())
+                .writer(entity.getWriter())
                 .regDate(entity.getRegDate())
                 .modDate(entity.getModDate())
                 .build();
+
         return dto;
     }
 }

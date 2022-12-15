@@ -8,16 +8,14 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class CsDTO {
-    private long no;
+
+    private Long no;
     private String title;
-    private String text;
-    private String files;
-    private String category;
-    private String user_id;
-    private LocalDateTime date;
+    private String content;
+    private String writer;
     private LocalDateTime regDate, modDate;
 }
