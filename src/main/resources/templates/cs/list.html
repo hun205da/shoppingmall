@@ -51,14 +51,15 @@
 
             <tr th:each="dto : ${result.dtoList}" >
                 <th scope="row">
+                    [[${dto.no}]]
+                </th>
+                <td>
                     <a th:href="@{/cs/read(no = ${dto.no},
                     page= ${result.page},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
-                        [[${dto.no}]]
-                    </a>
-                </th>
-                <td>[[${dto.title}]]</td>
+                        [[${dto.title}]] </a>
+                </td>
                 <td>[[${dto.writer}]]</td>
                 <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
             </tr>
