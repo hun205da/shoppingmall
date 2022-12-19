@@ -3,8 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        .search-mode {
+              position: relative;
+              width: 400px;
+              height: 30px;
+              margin: 10px auto;
+        }
+        input {
+              border: 3px solid #F1F1F1;
+              border-radius: 50px;
+              width: 100%;
+              height: 150%;
+              padding-inline-start: 35px;
+              
+              margin-left: -20px;
+              font-size : 20px;
+
+        }
+
+        .icon {
+              width: 20px;
+              display: flex;
+              justify-content: space-between;
+              position: absolute;
+              margin-left: -20px;
+              top: 3px;
+              right: 10px;
+              left: 10px;
+              font-size: 30px;
+            
+              z-index: 0;
+
+
+        }
+
+        .search {
+          color: #808080;
+        }
+
+        .plus-option i {
+          display: inline-block;
+          margin-left: 5px;
+        }
+
+
+        .plus-option i:nth-child(2){
+          color: #4F86EC;
+        }
+
+        .bg {
+          width: 100vw;
+          height: 100vh;
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+
+          background-image: url("img/3.jpg");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 100% 100%;
+        }
+    </style>
 </head>
+
 <body>
+  <div class="bg">
+    <div class="img">
+      <center><img src="img/1.png" style="margin-top: 200px;"></center>
+<div class="search-mode">
+    <input type="text" >
+
+    <div class="icon">
+        <div class="search">
+            <i class="fa fa-search"></i>
+        </div>
+
+      
+    </div>
+
+</div>
+</div>
+    </div>
+  </div>
+    
+  
+
 
 </body>
 </html>
