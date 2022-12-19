@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -70,20 +70,15 @@
                                                     <th><a href="#">전화번호</a></th>
                                                     <th><a href="#">이메일</a></th>
                                                     <th><a href="#">닉네임</a></th>
-                                                    <th><a href="#">취소신청</a></th>
-                                                    <th><a href="#">취소완료</a></th>
-                                                    <th><a href="#">반품신청</a></th>
-                                                    <th><a href="#">반품완료</a></th>
-                                                    <th><a href="#">교환신청</a></th>
-                                                    <th><a href="#">교환완료</a></th>
-                                                    <th><a href="#">환불신청</a></th>
-                                                    <th><a href="#">환불완료</a></th>
-                                                    <th><a href="#">전체주문</a></th>
+                                                    <th><a href="#">이메일수신여부</a></th>
+                                                    <th><a href="#">권한</a></th>
+                                                    <th><a href="#">등급</a></th>
+                                                    <th><a href="#">가입날짜</a></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>18건</td>
+                                                    <td th:each="dto : ${data1}">[[${dto}]]18건</td>
                                                     <td>7건</td>
                                                     <td>6건</td>
                                                     <td>0건</td>
@@ -93,11 +88,6 @@
                                                     <td>43건</td>
                                                     <td>1건</td>
                                                     <td>1건</td>
-                                                    <td>1건</td>
-                                                    <td>1건</td>
-                                                    <td>0건</td>
-                                                    <td>2건</td>
-                                                    <td>94건</td>
                                                 </tr>							
                                             </tbody>
                                         </table>
