@@ -26,11 +26,11 @@
             </div>
             <div class="form-group">
                 <label >Content</label>
-                <textarea class="form-control" rows="5" name="content">[[${dto.content}]]</textarea>
+                <textarea class="form-control" rows="5" name="text">[[${dto.text}]]</textarea>
             </div>
             <div class="form-group">
                 <label >Writer</label>
-                <input type="text" class="form-control" name="writer" th:value="${dto.writer}" readonly>
+                <input type="text" class="form-control" name="user_id" th:value="${dto.user_id}">
             </div>
             <div class="form-group">
                 <label >RegDate</label>

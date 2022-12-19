@@ -94,7 +94,7 @@ public class CsServiceImpl implements CsService {
             Cs entity = result.get();
 
             entity.changeTitle(dto.getTitle());
-            entity.changeContent(dto.getContent());
+            entity.changeText(dto.getText());
 
             repository.save(entity);
 
@@ -128,10 +128,10 @@ public class CsServiceImpl implements CsService {
             conditionBuilder.or(qcs.title.contains(keyword));
         }
         if(type.contains("c")){
-            conditionBuilder.or(qcs.content.contains(keyword));
+            conditionBuilder.or(qcs.text.contains(keyword));
         }
         if(type.contains("w")){
-            conditionBuilder.or(qcs.writer.contains(keyword));
+            conditionBuilder.or(qcs.user_id.contains(keyword));
         }
 
         //모든 조건 통합

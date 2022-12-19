@@ -15,7 +15,7 @@ public class CsDTO {
 
     private Long no;
     private String title;
-    private String content;
-    private String writer;
+    private String text;
+    private String user_id;
     private LocalDateTime regDate, modDate;
 }

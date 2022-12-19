@@ -28,8 +28,8 @@ public class CsRepositoryTests {
 
             Cs cs = Cs.builder()
                     .title("Title...." + i)
-                    .content("Content..." +i)
-                    .writer("user" + (i % 10))
+                    .text("Text..." +i)
+                    .user_id("user" + (i % 10))
                     .build();
             System.out.println(csRepository.save(cs));
         });
@@ -45,7 +45,7 @@ public class CsRepositoryTests {
             Cs cs = result.get();
 
             cs.changeTitle("Changed Title....");
-            cs.changeContent("Changed Content...");
+            cs.changeText("Changed Text...");
 
             csRepository.save(cs);
         }
@@ -87,9 +87,9 @@ public class CsRepositoryTests {
 
         BooleanExpression exTitle =  qCs.title.contains(keyword);
 
-        BooleanExpression exContent =  qCs.content.contains(keyword);
+        BooleanExpression exText =  qCs.text.contains(keyword);
 
-        BooleanExpression exAll = exTitle.or(exContent); // 1----------------
+        BooleanExpression exAll = exTitle.or(exText); // 1----------------
 
         builder.and(exAll); //2-----
 

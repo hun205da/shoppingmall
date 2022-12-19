@@ -20,17 +20,17 @@ public class Cs extends BaseEntity {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(length = 1500, nullable = false)
-    private String content;
+    @Column(length = 1500, nullable = true)
+    private String text;
 
-    @Column(length = 50, nullable = false)
-    private String writer;
+    @Column(length = 50, nullable = true)
+    private String user_id;
 
     public void changeTitle(String title){
         this.title = title;
     }
 
-    public void changeContent(String content){
-        this.content = content;
+    public void changeText(String text){
+        this.text = text;
     }
 }

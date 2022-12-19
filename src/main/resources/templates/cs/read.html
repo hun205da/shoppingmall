@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+<th:block th:replace="~{/layout/basic :: setContent(~{this::text} )}">
 
-    <th:block th:fragment="content">
+    <th:block th:fragment="text">
 
         <h1 class="mt-4">Read Page</h1>
 
@@ -18,11 +18,11 @@
         </div>
         <div class="form-group">
             <label >Content</label>
-            <textarea class="form-control" rows="5" name="content" readonly>[[${dto.content}]]</textarea>
+            <textarea class="form-control" rows="5" name="text" readonly>[[${dto.text}]]</textarea>
         </div>
         <div class="form-group">
-            <label >Writer</label>
-            <input type="text" class="form-control" name="writer" th:value="${dto.writer}" readonly>
+            <label >User_id</label>
+            <input type="text" class="form-control" name="user_id" th:value="${dto.user_id}" readonly>
         </div>
         <div class="form-group">
             <label >RegDate</label>

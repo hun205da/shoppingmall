@@ -21,8 +21,8 @@ public interface CsService {
         Cs entity = Cs.builder()
                 .no(dto.getNo())
                 .title(dto.getTitle())
-                .content(dto.getContent())
-                .writer(dto.getWriter())
+                .text(dto.getText())
+                .user_id(dto.getUser_id())
                 .build();
         return entity;
     }
@@ -32,8 +32,8 @@ public interface CsService {
         CsDTO dto  = CsDTO.builder()
                 .no(entity.getNo())
                 .title(entity.getTitle())
-                .content(entity.getContent())
-                .writer(entity.getWriter())
+                .text(entity.getText())
+                .user_id(entity.getUser_id())
                 .regDate(entity.getRegDate())
                 .modDate(entity.getModDate())
                 .build();

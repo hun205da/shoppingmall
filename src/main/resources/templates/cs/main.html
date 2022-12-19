@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <h1 class="mt-4">고객센터 메인페이지</h1>
+        <div>
+                <span>
+                <a th:href="@{/cs/list}">
+                    <button type="button" class="btn btn-outline-primary">상담
+                    </button>
+                </a>
+                 </span>
+        </div>
+        <br>
+        <div>
+                <span>
+                    <button type="button" class="btn btn-outline-danger">FAQ
+                    </button>
+                </span>
+        </div>
+
+        <script>
+
+            var msg = [[${msg}]];
+
+            console.log(msg);
+
+            if(msg){
+                $(".modal").modal();
+            }
+            var searchForm = $("#searchForm");
+
+            $('.btn-search').click(function(e){
+
+                searchForm.submit();
+
+            });
+
+            $('.btn-clear').click(function(e){
+
+                searchForm.empty().submit();
+
+            });
+
+
+        </script>
+
+
+
+    </th:block>
+
+</th:block>
