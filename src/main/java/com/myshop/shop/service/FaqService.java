@@ -1,45 +1,36 @@
 package com.myshop.shop.service;
 
-import com.myshop.shop.dto.CsDTO;
+import com.myshop.shop.dto.FaqDTO;
 import com.myshop.shop.dto.PageRequestDTO;
 import com.myshop.shop.dto.PageResultDTO;
-import com.myshop.shop.entity.Cs;
+import com.myshop.shop.entity.Faq;
 
-public interface CsService {
+public interface FaqService {
+    Long register(FaqDTO dto);
 
-    Long register(CsDTO dto);
-
-    PageResultDTO<CsDTO, Cs> getList(PageRequestDTO requestDTO);
-
-    CsDTO read(Long no);
-
-    void modify(CsDTO dto);
-
-    void remove(Long no);
-
-    default Cs dtoToEntity(CsDTO dto) {
-        Cs entity = Cs.builder()
+    default Faq dtoToEntity(FaqDTO dto){
+        Faq entity = Faq.builder()
                 .no(dto.getNo())
                 .title(dto.getTitle())
                 .category(dto.getCategory())
                 .text(dto.getText())
-                .user_id(dto.getUser_id())
                 .build();
         return entity;
     }
 
-    default CsDTO entityToDto(Cs entity){
+    default FaqDTO entityToDto(Faq entity){
 
-        CsDTO dto  = CsDTO.builder()
+        FaqDTO dto  = FaqDTO.builder()
                 .no(entity.getNo())
                 .title(entity.getTitle())
                 .category(entity.getCategory())
                 .text(entity.getText())
-                .user_id(entity.getUser_id())
                 .regDate(entity.getRegDate())
                 .modDate(entity.getModDate())
                 .build();
 
         return dto;
     }
+
+    PageResultDTO<FaqDTO, Faq> getList(PageRequestDTO requestDTO);
 }

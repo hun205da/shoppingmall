@@ -25,6 +25,10 @@
                 <input type="text" class="form-control" name="title" th:value="${dto.title}" >
             </div>
             <div class="form-group">
+                <label >Category</label>
+                <input type="text" class="form-control" name="category" th:value="${dto.category}" >
+            </div>
+            <div class="form-group">
                 <label >Content</label>
                 <textarea class="form-control" rows="5" name="text">[[${dto.text}]]</textarea>
             </div>

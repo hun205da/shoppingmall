@@ -21,6 +21,7 @@ public class CsServiceTests {
         CsDTO csDTO = CsDTO.builder()
                 .title("Sample Title...")
                 .text("Sample Content...")
+                .category("Sample Category")
                 .user_id("user0")
                 .build();
 

@@ -11,12 +11,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CsDTO {
-
+public class FaqDTO {
     private Long no;
     private String title;
     private String text;
-    private String user_id;
     private String category;
     private LocalDateTime regDate, modDate;
 }
