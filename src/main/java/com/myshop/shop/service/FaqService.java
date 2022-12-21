@@ -6,9 +6,18 @@ import com.myshop.shop.dto.PageResultDTO;
 import com.myshop.shop.entity.Faq;
 
 public interface FaqService {
+
     Long register(FaqDTO dto);
 
-    default Faq dtoToEntity(FaqDTO dto){
+    PageResultDTO<FaqDTO, Faq> getList(PageRequestDTO requestDTO);
+
+    FaqDTO read(Long no);
+
+    void modify(FaqDTO dto);
+
+    void remove(Long no);
+
+    default Faq dtoToEntity(FaqDTO dto) {
         Faq entity = Faq.builder()
                 .no(dto.getNo())
                 .title(dto.getTitle())
@@ -31,6 +40,4 @@ public interface FaqService {
 
         return dto;
     }
-
-    PageResultDTO<FaqDTO, Faq> getList(PageRequestDTO requestDTO);
 }

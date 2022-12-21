@@ -24,7 +24,7 @@ public class Cs extends BaseEntity {
     private String text;
 
     @Column(length = 50, nullable = true)
-    private String user_id;
+    private String userId;
 
     @Column(length = 50, nullable = true)
     private String category;

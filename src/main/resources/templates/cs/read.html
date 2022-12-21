@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
             <label >User_id</label>
-            <input type="text" class="form-control" name="user_id" th:value="${dto.user_id}" readonly>
+            <input type="text" class="form-control" name="userId" th:value="${dto.userId}" readonly>
         </div>
         <div class="form-group">
             <label >RegDate</label>
@@ -41,11 +41,11 @@
 
         <!--        <a th:href="@{/faq/list(page=${requestDTO.page})}"><button type="button" class="btn btn-info">List</button></a>-->
 
-        <a th:href="@{/faq/modify(no = ${dto.no}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+        <a th:href="@{/cs/modify(no = ${dto.no}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
             <button type="button" class="btn btn-primary">Modify</button>
         </a>
 
-        <a th:href="@{/faq/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+        <a th:href="@{/cs/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
             <button type="button" class="btn btn-info">List</button>
         </a>
 

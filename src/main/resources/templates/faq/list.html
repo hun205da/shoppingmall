@@ -5,10 +5,10 @@
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">상담 페이지
+        <h1 class="mt-4">FAQ 페이지
             <span>
                 <a th:href="@{/faq/register}">
-                    <button type="button" class="btn btn-outline-primary">상담등록
+                    <button type="button" class="btn btn-outline-primary">FAQ 등록
                     </button>
                 </a>
             </span>
@@ -53,7 +53,7 @@
                     [[${dto.no}]]
                 </th>
                 <td>
-                    <a th:href="@{/cs/read(no = ${dto.no},
+                    <a th:href="@{/faq/read(no = ${dto.no},
                     page= ${result.page},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
@@ -70,13 +70,13 @@
         <ul class="pagination h-100 justify-content-center align-items-center">
 
             <li class="page-item " th:if="${result.prev}">
-                <a class="page-link" th:href="@{/cs/list(page= ${result.start -1},
+                <a class="page-link" th:href="@{/faq/list(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">이전</a>
             </li>
 
             <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-                <a class="page-link" th:href="@{/cs/list(page = ${page} ,
+                <a class="page-link" th:href="@{/faq/list(page = ${page} ,
                    type=${pageRequestDTO.type} ,
                    keyword = ${pageRequestDTO.keyword}  )}">
                     [[${page}]]
@@ -84,7 +84,7 @@
             </li>
 
             <li class="page-item" th:if="${result.next}">
-                <a class="page-link" th:href="@{/cs/list(page= ${result.end + 1} ,
+                <a class="page-link" th:href="@{/faq/list(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} )}">다음</a>
             </li>

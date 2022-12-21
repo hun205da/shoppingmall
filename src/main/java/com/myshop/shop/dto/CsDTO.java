@@ -16,7 +16,7 @@ public class CsDTO {
     private Long no;
     private String title;
     private String text;
-    private String user_id;
+    private String userId;
     private String category;
     private LocalDateTime regDate, modDate;
 }
