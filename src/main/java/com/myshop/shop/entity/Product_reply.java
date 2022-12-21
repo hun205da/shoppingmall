@@ -8,27 +8,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Product")
+@Table(name = "Product_reply")
 @ToString
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product_reply {
     @Id
     @Column(length = 30,nullable = false)
-    private String productnumber;
+    private int replyNumber;
     @Column(length = 50, nullable = true)
-    private String product_name;
+    private String content;
+    @Column(length = 50, nullable = true)
+    private String writerNicknamee;
     @Column(length = 20, nullable = true)
-    private String product_price;
-    @Column(length = 20, nullable = true)
-    private String product_stock;
+    private String reportingDate;
     @Column(length = 50,  nullable = true)
-    private String product_info;
+    private String replyOriginNumber;
     @Column(length = 20, nullable = true)
-    private String product_date;
+    private String replyOrder;
     @Column(length = 1,  nullable = true)
-    private String product_hits;
-
+    private String productNumber;
 }

@@ -24,7 +24,7 @@ abstract class BaseEntity {
     private LocalDateTime modDate;
 
     @CreatedDate
-    @Column(name = "user_insertdate" ,updatable = false)
-    private LocalDateTime user_insertdate;
+    @Column(name = "userInsertdate" ,updatable = false)
+    private LocalDateTime userInsertdate;
 
 }

@@ -14,15 +14,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class UserDTO {
-    private String user_id;
-    private String user_pw;
-    private String user_name;
-    private String user_phone;
-    private String user_email;
-    private String user_nickname;
-    private String user_profile;
-    private String email_check;
-    private int user_role;
-    private int user_grade;
-    private LocalDateTime user_insertdate;
+    private String userId;
+    private String userPw;
+    private String userName;
+    private String userPhone;
+    private String userEmail;
+    private String userNickname;
+    private String userProfile;
+    private String emailCheck;
+    private int userRole;
+    private int userGrade;
+    private LocalDateTime userInsertdate;
 }

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/layout/masterlist")
 @Log4j2
 public class MasterControllerCart {
-    @GetMapping("/masterlist_cartlist")
-    public void masterlist_cartlist(){
+    @GetMapping("/masterlistCartlist")
+    public void masterlistCartlist(){
 
     }
 

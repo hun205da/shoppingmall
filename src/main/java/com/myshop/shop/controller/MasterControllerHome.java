@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/layout/masterlist")
 @Log4j2
 public class MasterControllerHome {
-    @GetMapping("/masterlist_home")
-    public void masterlist_home(){
+    @GetMapping("/masterlistHome")
+    public void masterlistHome(){
 
     }
 }
