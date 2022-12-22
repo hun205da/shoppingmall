@@ -19,19 +19,12 @@ public class User extends BaseEntity{
     private String userId;
     @Column(length = 50, nullable = false)
     private String userPw;
-    @Column(length = 20, nullable = true)
+    @Column(length = 20, nullable = false)
     private String userName;
-    @Column(length = 20, nullable = true)
+    @Column(length = 20, nullable = false)
     private String userPhone;
-    @Column(length = 50,  nullable = true)
+    @Column(length = 50,  nullable = false)
     private String userEmail;
-    @Column(length = 20, nullable = true)
-    private String userNickname;
-    @Column(length = 1,  nullable = true)
-    private String emailCheck;
-    @Column(length = 10, nullable = true)
-    private int userRole;
-    @Column(length = 10,  nullable = true)
-    private int userGrade;
-
+    @Column(nullable = false)
+    private boolean emailCheck;
 }

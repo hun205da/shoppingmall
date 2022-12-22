@@ -23,6 +23,7 @@ public class UserRepositoryTests {
                 .userPw("111")
                 .userNickname("다다다")
                 .userPhone("010-8898-4865")
+                .userGrade(50000)
                 .build();
         UserDTO user_infodto1 = UserDTO.builder()
                 .userId("hkddsdsd31231312")

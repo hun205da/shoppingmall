@@ -17,13 +17,9 @@ public interface UserService {
         User entity = User.builder()
                 .userId(dto.getUserId())
                 .userPw(dto.getUserPw())
-                .userGrade(dto.getUserGrade())
                 .userName(dto.getUserName())
-                .userNickname(dto.getUserNickname())
                 .userPhone(dto.getUserPhone())
-                .userRole(dto.getUserRole())
                 .userEmail(dto.getUserEmail())
-
                 .build();
         return entity;
     }
@@ -31,11 +27,8 @@ public interface UserService {
         UserDTO dto = UserDTO.builder()
                 .userId(entity.getUserId())
                 .userPw(entity.getUserPw())
-                .userGrade(entity.getUserGrade())
                 .userName(entity.getUserName())
-                .userNickname(entity.getUserNickname())
                 .userPhone(entity.getUserPhone())
-                .userRole(entity.getUserRole())
                 .userEmail(entity.getUserEmail())
                 .userInsertdate(entity.getUserInsertdate())
                 .build();
