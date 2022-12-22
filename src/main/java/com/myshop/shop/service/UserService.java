@@ -23,6 +23,7 @@ public interface UserService {
                 .userPhone(dto.getUserPhone())
                 .userRole(dto.getUserRole())
                 .userEmail(dto.getUserEmail())
+
                 .build();
         return entity;
     }
@@ -36,6 +37,7 @@ public interface UserService {
                 .userPhone(entity.getUserPhone())
                 .userRole(entity.getUserRole())
                 .userEmail(entity.getUserEmail())
+                .userInsertdate(entity.getUserInsertdate())
                 .build();
         return dto;
     }
