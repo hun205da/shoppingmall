@@ -2,33 +2,29 @@ package com.myshop.shop.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Product")
-@ToString
+@ToString(exclude = "ProductCategory")
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product extends BaseEntity{
     @Id
-    @Column(length = 30,nullable = false)
-    private String productnumber;
-    @Column(length = 50, nullable = true)
-    private String product_name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long productNumber;
+    @Column(length = 50, nullable = false)
+    private String productName;
+    @Column(nullable = false)
+    private int productPrice;
+    @Column(nullable = false)
+    private int productStock;
+    @Column(length = 100,  nullable = true)
+    private String productInfo;
     @Column(length = 20, nullable = true)
-    private String product_price;
-    @Column(length = 20, nullable = true)
-    private String product_stock;
-    @Column(length = 50,  nullable = true)
-    private String product_info;
-    @Column(length = 20, nullable = true)
-    private String product_date;
-    @Column(length = 1,  nullable = true)
-    private String product_hits;
-
+    private int productHits;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProductCategory productCategory;
 }
