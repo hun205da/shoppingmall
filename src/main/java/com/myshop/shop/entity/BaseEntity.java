@@ -23,8 +23,22 @@ abstract class BaseEntity {
     @Column(name ="moddate" )
     private LocalDateTime modDate;
 
+    //USER 가입날짜
     @CreatedDate
-    @Column(name = "user_insertdate" ,updatable = false)
-    private LocalDateTime user_insertdate;
+    @Column(name = "userInsertdate" ,updatable = false)
+    private LocalDateTime userInsertdate;
+    
+    
+    //PRODUCT객체_상품 수정날짜
+    @LastModifiedDate
+    @Column(name = "productDate")
+    private LocalDateTime productDate;
+
+
+    //productreply객체_ 상품후기 작성날짜
+    @LastModifiedDate
+    @Column(name = "reportingDate")
+    private LocalDateTime reportingDate;
+
 
 }

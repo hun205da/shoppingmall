@@ -19,23 +19,19 @@ public class UserRepositoryTests {
     @Test
     public void insertdummies(){
         UserDTO user_infodto = UserDTO.builder()
-                .user_id("hkd")
-                .user_pw("111")
-                .user_nickname("다다다")
-                .user_phone("010-8898-4865")
+                .userId("hkd2323231")
+                .userPw("111")
+                .userNickname("다다다")
+                .userPhone("010-8898-4865")
+                .userGrade(50000)
                 .build();
         UserDTO user_infodto1 = UserDTO.builder()
-                .user_id("hkddsdsd")
-                .user_pw("111")
-                .user_nickname("다다다")
-                .user_phone("010-8898-4865")
+                .userId("hkddsdsd31231312")
+                .userPw("111")
+                .userNickname("다다다")
+                .userPhone("010-8898-4865")
                 .build();
-
-        //이걸 쓰면적용이된다?
-
         userservice.userdata(user_infodto);
         userservice.userdata(user_infodto1);
-
-
     }
 }

@@ -16,22 +16,15 @@ import java.time.LocalDateTime;
 public class User extends BaseEntity{
     @Id
     @Column(length = 30,nullable = false)
-    private String user_id;
-    @Column(length = 50, nullable = true)
-    private String user_pw;
-    @Column(length = 20, nullable = true)
-    private String user_name;
-    @Column(length = 20, nullable = true)
-    private String user_phone;
-    @Column(length = 50,  nullable = true)
-    private String user_email;
-    @Column(length = 20, nullable = true)
-    private String user_nickname;
-    @Column(length = 1,  nullable = true)
-    private String email_check;
-    @Column(length = 10, nullable = true)
-    private int user_role;
-    @Column(length = 10,  nullable = true)
-    private int user_grade;
-
+    private String userId;
+    @Column(length = 50, nullable = false)
+    private String userPw;
+    @Column(length = 20, nullable = false)
+    private String userName;
+    @Column(length = 20, nullable = false)
+    private String userPhone;
+    @Column(length = 50,  nullable = false)
+    private String userEmail;
+    @Column(nullable = false)
+    private boolean emailCheck;
 }
