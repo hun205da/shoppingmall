@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <th:block th:replace="~{/layout/layout1 :: setContent(~{this::content})}">
+        <th:block th:fragment="content">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -69,10 +71,7 @@
                                                     <th><a href="#">이름</a></th>
                                                     <th><a href="#">전화번호</a></th>
                                                     <th><a href="#">이메일</a></th>
-                                                    <th><a href="#">닉네임</a></th>
                                                     <th><a href="#">이메일수신여부</a></th>
-                                                    <th><a href="#">권한</a></th>
-                                                    <th><a href="#">등급</a></th>
                                                     <th><a href="#">가입날짜</a></th>
                                                 </tr>
                                             </thead>
@@ -83,10 +82,7 @@
                                                     <td>[[${dto.userName}]]</td>
                                                     <td>[[${dto.userPhone}]]</td>
                                                     <td>[[${dto.userEmail}]]</td>
-                                                    <td>[[${dto.userNickname}]]</td>
                                                     <td>[[${dto.emailCheck}]]</td>
-                                                    <td>[[${dto.userRole}]]</td>
-                                                    <td>[[${dto.userGrade}]]</td>
                                                     <td>[[${#temporals.format(dto.userInsertdate,'yyyy/MM/dd')}]]</td>
                                                 </tr>							
                                             </tbody>
@@ -105,4 +101,7 @@
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
     </body>
+</th:block>
+        
+</th:block>
 </html>

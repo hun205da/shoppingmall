@@ -26,5 +26,5 @@ public class User extends BaseEntity{
     @Column(length = 50,  nullable = false)
     private String userEmail;
     @Column(nullable = false)
-    private boolean emailCheck;
+    private int emailCheck;
 }

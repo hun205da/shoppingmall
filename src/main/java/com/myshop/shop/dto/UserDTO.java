@@ -19,10 +19,12 @@ public class UserDTO {
     private String userName;
     private String userPhone;
     private String userEmail;
-    private String userNickname;
-    private String userProfile;
-    private String emailCheck;
-    private int userRole;
-    private int userGrade;
+    private int emailCheck;
     private LocalDateTime userInsertdate;
+
+
+
+
+
+
 }
