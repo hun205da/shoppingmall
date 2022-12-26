@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class User extends BaseEntity{
     @Id
-    @Column(length = 30,nullable = false)
+    @Column(length = 30,nullable = true)
     private String userId;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     private String userPw;
     @Column(length = 20, nullable = true)
     private String userName;
