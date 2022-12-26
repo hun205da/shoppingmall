@@ -28,9 +28,9 @@ public class CsRepositoryTests {
         IntStream.rangeClosed(1,300).forEach(i -> {
 
             Cs cs = Cs.builder()
-                    .title("Title...." + i)
+                    .title("제목...." + i)
                     .text("Text..." +i)
-                    .user_id("user" + (i % 10))
+                    .userId("user" + (i % 10))
                     .category("Category")
                     .build();
             System.out.println(csRepository.save(cs));

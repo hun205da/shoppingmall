@@ -22,7 +22,7 @@ public class CsServiceTests {
                 .title("Sample Title...")
                 .text("Sample Content...")
                 .category("Sample Category")
-                .user_id("user0")
+                .userId("user0")
                 .build();
 
         System.out.println(service.register(csDTO));
