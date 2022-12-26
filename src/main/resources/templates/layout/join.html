@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="./join.css" rel="stylesheet">
+    <link href="/src/main/resources/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="login-wrapper">
+            <h2>회원가입</h2>
+            <form th:method="post" th:action="@{/layout/join}" id="login-form">
+                <input class="duri" type="name" name="name" placeholder="이름">
+                <input class="duri" type="userid" name="userId" placeholder="아이디">
+                <input class="duri" type="useremail" name="userEmail" placeholder="이메일">
+                <input class="duri" type="password" name="userPassword" placeholder="비밀번호">
+                <input class="duri" type="checkPassword" name="checkUserPassword" placeholder="비밀번호 확인">
+                
+                <label for="remember-check">
+                    <input type="checkbox" id="remember-check">아이디 저장하기
+                </label>
+                <input type="submit" value="가입하기">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
