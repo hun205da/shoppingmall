@@ -21,7 +21,8 @@ public class CsServiceTests {
         CsDTO csDTO = CsDTO.builder()
                 .title("Sample Title...")
                 .text("Sample Content...")
-                .user_id("user0")
+                .category("Sample Category")
+                .userId("user0")
                 .build();
 
         System.out.println(service.register(csDTO));

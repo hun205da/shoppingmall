@@ -24,7 +24,10 @@ public class Cs extends BaseEntity {
     private String text;
 
     @Column(length = 50, nullable = true)
-    private String user_id;
+    private String userId;
+
+    @Column(length = 50, nullable = true)
+    private String category;
 
     public void changeTitle(String title){
         this.title = title;
@@ -33,4 +36,9 @@ public class Cs extends BaseEntity {
     public void changeText(String text){
         this.text = text;
     }
+
+//    public void changeCategory(String category) { this.category = category; }
 }
+
+
+

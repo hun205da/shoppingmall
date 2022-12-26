@@ -17,15 +17,22 @@ public class Faq extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long no;
 
-    @Column
-    private Long title;
+    @Column(length = 100, nullable = false)
+    private String title;
 
-    @Column
-    private Long text;
+    @Column(length = 1500, nullable = false)
+    private String text;
 
-    @Column
-    private Long category;
+    @Column(length = 50, nullable = true)
+    private String category;
 
-    @Column
-    private Long file;
+    public void changeTitle(String title){
+        this.title = title;
+    }
+
+    public void changeText(String text){
+        this.text = text;
+    }
+
+    public void changeCategory(String category) { this.category = category; }
 }
