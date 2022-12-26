@@ -1,6 +1,7 @@
 package com.myshop.shop.repository;
 
 import com.myshop.shop.entity.Cs;
+import com.myshop.shop.entity.Faq;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.junit.jupiter.api.Test;
@@ -27,13 +28,17 @@ public class CsRepositoryTests {
         IntStream.rangeClosed(1,300).forEach(i -> {
 
             Cs cs = Cs.builder()
-                    .title("Title...." + i)
+                    .title("제목...." + i)
                     .text("Text..." +i)
-                    .user_id("user" + (i % 10))
+                    .userId("user" + (i % 10))
+                    .category("Category")
                     .build();
             System.out.println(csRepository.save(cs));
         });
     }
+
+
+
 
     @Test
     public void updateTest() {

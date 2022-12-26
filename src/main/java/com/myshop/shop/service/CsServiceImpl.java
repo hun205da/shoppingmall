@@ -131,7 +131,7 @@ public class CsServiceImpl implements CsService {
             conditionBuilder.or(qcs.text.contains(keyword));
         }
         if(type.contains("w")){
-            conditionBuilder.or(qcs.user_id.contains(keyword));
+            conditionBuilder.or(qcs.userId.contains(keyword));
         }
 
         //모든 조건 통합

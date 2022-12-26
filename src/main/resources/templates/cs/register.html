@@ -5,7 +5,7 @@
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">GuestBook Register Page</h1>
+        <h1 class="mt-4">상담 등록 페이지</h1>
 
         <form th:action="@{/cs/register}" th:method="post">
             <div class="form-group">
@@ -13,12 +13,16 @@
                 <input type="text" class="form-control" name="title" placeholder="Enter Title">
             </div>
             <div class="form-group">
+                <label >Category</label>
+                <input type="text" class="form-control" name="category" placeholder="Enter category">
+            </div>
+            <div class="form-group">
                 <label >Content</label>
                 <textarea class="form-control" rows="5" name="text"></textarea>
             </div>
             <div class="form-group">
                 <label >Writer</label>
-                <input type="text" class="form-control" name="user_id" placeholder="Enter user_id">
+                <input type="text" class="form-control" name="userId" placeholder="Enter userId">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

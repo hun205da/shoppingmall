@@ -104,18 +104,6 @@ public class CsController {
 
     }
 
-    @GetMapping("/mainlist")
-    public String mainlist(){
-        log.info("mainlist...");
-        return "/cs/mainlist";
-    }
-
-    @GetMapping("/mainlistif")
-    public String mainlistif(){
-        log.info("mainlistif...");
-        return "/cs/mainlistif";
-    }
-
     @GetMapping("/main")
     public String main(){
         log.info("main...");
