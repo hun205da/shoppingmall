@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/layout/")
 @Log4j2
 public class SampleController {
-    @GetMapping("/main")
+    @GetMapping("/basic")
     public void basic(){
 
     }
