@@ -82,7 +82,7 @@
     <div class="navbar">
         <div class="container-fluid">
             <ul>
-                <li><img src="img/1.png"></li>
+                <li><img src="/img/1.png"></li>
                 <li><i class="fa fa-search"></i><input class="search" type="search"></li>
                 <li class="icon"><i class="fa fa-user"></i></li>
                 <li class="icon"><i class="fa fa-shopping-basket"></i></li>
@@ -91,7 +91,12 @@
 
     </div>
 </div>
+<div class="content">
+    <th:block th:replace = "${content}">
 
+    </th:block>
+
+</div>
 <footer class="footer">
     <p>Footer Text</p>
 </footer>
