@@ -5,9 +5,9 @@
 
   <th:block th:fragment="content">
 
-    <h1 class="mt-4">FAQ 수정 페이지</h1>
+    <h1 class="mt-4">답변 페이지</h1>
 
-    <form action="/faq/modify" method="post">
+    <form action="/cs/reply" method="post">
 
       <!--페이지 번호  -->
       <input type="hidden" name="page" th:value="${requestDTO.page}">
@@ -22,15 +22,19 @@
 
       <div class="form-group">
         <label >제목</label>>
-        <input type="text" class="form-control" name="title" th:value="${dto.title}" >
-      </div>
-      <div class="form-group">
-        <label >카테고리</label>
-        <input type="text" class="form-control" name="category" th:value="${dto.category}" >
+        <input type="text" class="form-control" name="title" th:value="${dto.title}" readonly>
       </div>
       <div class="form-group">
         <label >내용</label>
-        <textarea class="form-control" rows="5" name="text">[[${dto.text}]]</textarea>
+        <textarea class="form-control" rows="5" name="text" readonly>[[${dto.text}]]</textarea>
+      </div>
+      <div class="form-group">
+        <label >답변</label>
+        <textarea class="form-control" rows="5" name="reply">[[${dto.reply}]]</textarea>
+      </div>
+      <div class="form-group">
+        <label >작성자</label>
+        <input type="text" class="form-control" name="userId" th:value="${dto.userId}" readonly>
       </div>
       <div class="form-group">
         <label >등록일</label>
@@ -47,21 +51,9 @@
 
     <button type="button" class="btn btn-info listBtn">목록</button>
 
-    <button type="button" class="btn btn-danger removeBtn">삭제</button>
-
     <script th:inline="javascript">
 
             var actionForm = $("form"); //form 태그 객체
-
-            $(".removeBtn").click(function(){
-
-                actionForm
-                    .attr("action", "/faq/remove")
-                    .attr("method","post");
-
-                actionForm.submit();
-
-            });
 
             $(".modifyBtn").click(function() {
 
@@ -70,7 +62,7 @@
                 }
 
                 actionForm
-                    .attr("action", "/faq/modify")
+                    .attr("action", "/cs/modify")
                     .attr("method","post")
                     .submit();
             });
@@ -90,7 +82,7 @@
 
 
                 actionForm
-                    .attr("action", "/faq/list")
+                    .attr("action", "/cs/list")
                     .attr("method","get");
 
                actionForm.submit();

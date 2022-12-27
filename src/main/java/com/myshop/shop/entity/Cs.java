@@ -29,6 +29,9 @@ public class Cs extends BaseEntity {
     @Column(length = 50, nullable = true)
     private String category;
 
+    @Column(length = 50, nullable = true)
+    private String reply;
+
     public void changeTitle(String title){
         this.title = title;
     }
@@ -37,7 +40,9 @@ public class Cs extends BaseEntity {
         this.text = text;
     }
 
-//    public void changeCategory(String category) { this.category = category; }
+    public void changeReply(String reply) { this.reply = reply; }
+
+    public void changeCategory(String category) { this.category = category; }
 }
 
 

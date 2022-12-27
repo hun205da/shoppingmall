@@ -95,12 +95,30 @@ public class CsServiceImpl implements CsService {
 
             entity.changeTitle(dto.getTitle());
             entity.changeText(dto.getText());
+            entity.changeCategory(dto.getCategory());
 
             repository.save(entity);
 
         }
     }
 
+    @Override
+    public void reply(CsDTO dto) {
+
+        //업데이트 하는 항목은 '제목', '내용'
+
+        Optional<Cs> result = repository.findById(dto.getNo());
+
+        if(result.isPresent()){
+
+            Cs entity = result.get();
+
+            entity.changeReply(dto.getReply());
+
+            repository.save(entity);
+
+        }
+    }
 
     private BooleanBuilder getSearch(PageRequestDTO requestDTO){
 
