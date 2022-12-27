@@ -18,5 +18,6 @@ public class CsDTO {
     private String text;
     private String userId;
     private String category;
+    private String reply;
     private LocalDateTime regDate, modDate;
 }

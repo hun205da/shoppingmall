@@ -95,6 +95,8 @@ public class CsServiceImpl implements CsService {
 
             entity.changeTitle(dto.getTitle());
             entity.changeText(dto.getText());
+            entity.changeReply(dto.getReply());
+            entity.changeCategory(dto.getCategory());
 
             repository.save(entity);
 

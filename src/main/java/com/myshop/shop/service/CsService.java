@@ -23,6 +23,7 @@ public interface CsService {
                 .title(dto.getTitle())
                 .category(dto.getCategory())
                 .text(dto.getText())
+                .reply(dto.getReply())
                 .userId(dto.getUserId())
                 .build();
         return entity;
@@ -35,6 +36,7 @@ public interface CsService {
                 .title(entity.getTitle())
                 .category(entity.getCategory())
                 .text(entity.getText())
+                .reply(entity.getReply())
                 .userId(entity.getUserId())
                 .regDate(entity.getRegDate())
                 .modDate(entity.getModDate())
