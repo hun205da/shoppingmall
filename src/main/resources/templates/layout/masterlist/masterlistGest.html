@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>관리자 페이지</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/masterlist.css" rel="stylesheet" />
-</head>
-<body>
+<th:block th:replace = "~{/layout/layout1 :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+<link href="/css/masterlist.css" rel="stylesheet" />
 <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
     <div class="border-end bg-white" id="sidebar-wrapper">
@@ -53,6 +44,26 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2><a href="#">USER</a></h2>
+
+                    <form action="/layout/masterlist/masterlistGest" method="get" id="searchForm">
+                        <div class="input-group">
+                            <input type="hidden" name="page" value="1">
+                            <div class="input-group-prepend">
+                                <select class="custom-select" name="type">
+                                    <option th:selected="${pageRequestDTO.type==null}">----------</option>
+                                    <option value="uid" th:selected="${pageRequestDTO.type==uid}">아이디</option>
+                                    <option value="upw" th:selected="${pageRequestDTO.type==upw}">패스워드</option>
+                                    <option value="uname" th:selected="${pageRequestDTO.type==uname}">이름</option>
+                                </select>
+                                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                                <div class="input-group-append" id="button-addon4">
+                                    <button class="btn btn-outline-secondary btn-search" type="button">Searcch</button>
+                                    <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
                         <li><a class="close-link"><i class="fas fa-close"></i></a></li>
@@ -85,7 +96,17 @@
                             </tr>
                             </tbody>
                         </table>
-
+                        <ul class="pagination h-100 justify-content-center align-items-center">
+                            <li class="page-item" th:if="${userdto.prev}">
+                                <a class="page-link" th:href="@{/layout/masterlist/masterlistGest(page=${userdto.start-1})}" tabindex="-1">Previous</a>
+                            </li>
+                            <li th:class=" 'page-item' + ${userdto.page == page?'active':''} " th:each="page: ${userdto.pageList}">
+                                <a class="page-link" th:href="@{/layout/masterlist/masterlistGest(page=${page})}">[[${page}]]</a>
+                            </li>
+                            <li class="page-item" th:if="${userdto.next}">
+                                <a class="page-link" th:href="@{/layout/masterlist/masterlistGest(page=${userdto.end+1})}" tabindex="+1">Next</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -98,5 +119,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
-</body>
-</html>
+<script th:inline="javascript">
+    var searchForm= $("#searchForm");
+    $('.btn-search').click(function(e){
+        searchForm.submit();
+    });
+    $('.btn-clear').click(function(e){
+        searchForm.empty().submit();
+    });
+</script>
+
+
+</th:block>
+</th:block>
