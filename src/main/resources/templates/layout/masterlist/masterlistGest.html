@@ -1,101 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--    <th:block th:replace="~{/layout/layout1 :: setContent(~{this::content})}">
-        <th:block th:fragment="content">-->
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet" />
-
-    <body>
-        <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">관리자 페이지</div>
-                <div class="sidebar-heading border-bottom bg-light">사용자(db)</div>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistCartlist">주문현황</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistSoldlist">매출현황</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistList">게시물현황</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistGest">회원</a>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>관리자 페이지</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/masterlist.css" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light">관리자 페이지</div>
+        <div class="sidebar-heading border-bottom bg-light">사용자(db)</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistCartlist">주문현황</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistSoldlist">매출현황</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistList">게시물현황</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/layout/masterlist/masterlistGest">회원</a>
+        </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="sidebarToggle"><</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active"><a class="nav-link" href="/layout/masterlist/masterlistHome">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#!">Action</a>
+                                <a class="dropdown-item" href="#!">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#!">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- Page content wrapper-->
-            <div id="page-content-wrapper">
-                <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle"><</button>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="/layout/masterlist/masterlistHome">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <!--USER-->
-                <div class="col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2><a href="#">USER</a></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
-                                <li><a class="close-link"><i class="fas fa-close"></i></a></li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table1">
-                                            <thead>
-                                                <tr>
-                                                    <th><a href="#">아이디</a></th>
-                                                    <th><a href="#">패스워드</a></th>
-                                                    <th><a href="#">이름</a></th>
-                                                    <th><a href="#">전화번호</a></th>
-                                                    <th><a href="#">이메일</a></th>
-                                                    <th><a href="#">이메일수신여부</a></th>
-                                                    <th><a href="#">가입날짜</a></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr th:each="dto : ${userdto.dtoList}">
-                                                    <td>[[${dto.userId}]]</td>
-                                                    <td>[[${dto.userPw}]]</td>
-                                                    <td>[[${dto.userName}]]</td>
-                                                    <td>[[${dto.userPhone}]]</td>
-                                                    <td>[[${dto.userEmail}]]</td>
-                                                    <td>[[${dto.emailCheck}]]</td>
-                                                    <td>[[${#temporals.format(dto.userInsertdate,'yyyy/MM/dd')}]]</td>
-                                                </tr>							
-                                            </tbody>
-                                        </table>
-                                        
-                                    </div>
-                        </div>
+        </nav>
+        <!--USER-->
+        <div class="col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><a href="#">USER</a></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fas fa-chevron-up"></i></a></li>
+                        <li><a class="close-link"><i class="fas fa-close"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="table-responsive">
+                        <table class="table table-hover table1">
+                            <thead>
+                            <tr>
+                                <th><a href="#">아이디</a></th>
+                                <th><a href="#">패스워드</a></th>
+                                <th><a href="#">이름</a></th>
+                                <th><a href="#">전화번호</a></th>
+                                <th><a href="#">이메일</a></th>
+                                <th><a href="#">이메일수신여부</a></th>
+                                <th><a href="#">가입날짜</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="dto : ${userdto.dtoList}">
+                                <td>[[${dto.userId}]]</td>
+                                <td>[[${dto.userPw}]]</td>
+                                <td>[[${dto.userName}]]</td>
+                                <td>[[${dto.userPhone}]]</td>
+                                <td>[[${dto.userEmail}]]</td>
+                                <td>[[${dto.emailCheck}]]</td>
+                                <td>[[${#temporals.format(dto.userInsertdate,'yyyy/MM/dd')}]]</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
-                <!--end-->
-                
             </div>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/js/scripts.js"></script>
-    </body>
-<!--</th:block>
+        <!--end-->
 
-</th:block>-->
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+</body>
 </html>
