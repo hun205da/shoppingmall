@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+
+  <th:block th:fragment="content">
+
+    <h1 class="mt-4">답변 페이지</h1>
+
+    <form action="/cs/reply" method="post">
+
+      <!--페이지 번호  -->
+      <input type="hidden" name="page" th:value="${requestDTO.page}">
+      <input type="hidden" name="type" th:value="${requestDTO.type}" >
+      <input type="hidden" name="keyword" th:value="${requestDTO.keyword}" >
+
+
+      <div class="form-group">
+        <label >번호</label>
+        <input type="text" class="form-control" name="no" th:value="${dto.no}" readonly >
+      </div>
+
+      <div class="form-group">
+        <label >제목</label>>
+        <input type="text" class="form-control" name="title" th:value="${dto.title}" readonly>
+      </div>
+      <div class="form-group">
+        <label >내용</label>
+        <textarea class="form-control" rows="5" name="text" readonly>[[${dto.text}]]</textarea>
+      </div>
+      <div class="form-group">
+        <label >답변</label>
+        <textarea class="form-control" rows="5" name="reply">[[${dto.reply}]]</textarea>
+      </div>
+      <div class="form-group">
+        <label >작성자</label>
+        <input type="text" class="form-control" name="userId" th:value="${dto.userId}" readonly>
+      </div>
+      <div class="form-group">
+        <label >등록일</label>
+        <input type="text" class="form-control" th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+      </div>
+      <div class="form-group">
+        <label >수정일</label>
+        <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+      </div>
+
+    </form>
+
+    <button type="button" class="btn btn-primary modifyBtn">수정</button>
+
+    <button type="button" class="btn btn-info listBtn">목록</button>
+
+    <script th:inline="javascript">
+
+            var actionForm = $("form"); //form 태그 객체
+
+            $(".modifyBtn").click(function() {
+
+                if(!confirm("수정하시겠습니까?")){
+                    return ;
+                }
+
+                actionForm
+                    .attr("action", "/cs/modify")
+                    .attr("method","post")
+                    .submit();
+            });
+
+            $(".listBtn").click(function() {
+
+                //var pageInfo = $("input[name='page']");
+                var page = $("input[name='page']");
+                var type = $("input[name='type']");
+                var keyword = $("input[name='keyword']");
+
+                actionForm.empty(); //form 태그의 모든 내용을 지우고
+
+                actionForm.append(page);
+                actionForm.append(type);
+                actionForm.append(keyword);
+
+
+                actionForm
+                    .attr("action", "/cs/list")
+                    .attr("method","get");
+
+               actionForm.submit();
+
+            })
+
+        </script>
+
+
+  </th:block>
+
+</th:block>

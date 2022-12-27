@@ -15,6 +15,8 @@ public interface CsService {
 
     void modify(CsDTO dto);
 
+    void reply(CsDTO dto);
+
     void remove(Long no);
 
     default Cs dtoToEntity(CsDTO dto) {
