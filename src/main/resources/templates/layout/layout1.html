@@ -1,6 +1,8 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="setContent(content)">
+
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -74,25 +76,26 @@
         }
 
       </style>
+
 </head>
-<body>
+<div class="header">
+    <div class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li><img src="img/1.png"></li>
+                <li><i class="fa fa-search"></i><input class="search" type="search"></li>
+                <li class="icon"><i class="fa fa-user"></i></li>
+                <li class="icon"><i class="fa fa-shopping-basket"></i></li>
+            </ul>
+        </div>
 
-<div class="navbar">
-    <div class="container-fluid">
-        <ul>
-            <li><img src="img/1.png"></li>
-            <li><i class="fa fa-search"></i><input class="search" type="search"></li>
-            <li class="icon"><i class="fa fa-user"></i></li>
-            <li class="icon"><i class="fa fa-shopping-basket"></i></li>
-        </ul>
     </div>
-
 </div>
-
 
 <footer class="footer">
     <p>Footer Text</p>
 </footer>
 
-</body>
+
+</th:block>
 </html>
