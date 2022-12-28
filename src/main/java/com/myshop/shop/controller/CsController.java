@@ -57,7 +57,7 @@ public class CsController {
 
     //@GetMapping("/read")
 
-    @GetMapping({"/read", "/modify"})
+    @GetMapping({"/read", "/modify", "/reply"})
     public void read(long no, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model ){
 
         log.info("no: " + no);
@@ -89,6 +89,28 @@ public class CsController {
 
 
         log.info("post modify.........................................");
+        log.info("dto: " + dto);
+
+        service.modify(dto);
+
+        redirectAttributes.addAttribute("page",requestDTO.getPage());
+        redirectAttributes.addAttribute("type",requestDTO.getType());
+        redirectAttributes.addAttribute("keyword",requestDTO.getKeyword());
+
+        redirectAttributes.addAttribute("no",dto.getNo());
+
+
+        return "redirect:/cs/read";
+
+    }
+
+    @PostMapping("/reply")
+    public String reply(CsDTO dto,
+                         @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
+                         RedirectAttributes redirectAttributes){
+
+
+        log.info("post reply.........................................");
         log.info("dto: " + dto);
 
         service.modify(dto);
