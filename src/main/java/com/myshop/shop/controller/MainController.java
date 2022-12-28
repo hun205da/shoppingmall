@@ -13,10 +13,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/layout")
 @RequiredArgsConstructor
-public class JoinController {
+public class MainController {
     private final UserService service;
     @GetMapping("/join")
     public void join(){
+    }
+    @GetMapping("/login")
+    public void login(){
+
     }
     @PostMapping("/join")
     public String joinPost(UserDTO dto, RedirectAttributes redirectAttributes) {

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link href="login.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
     <link href="/src/main/resources/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="login-wrapper">
             <h2>로그인</h2>
-            <form method="post" action="" id="login-form">
+            <form method="post" th:action="@{/layout/basic}"  id="login-form">
                 
                 <input class="duri" type="text" name="userName" placeholder="ID">
                 <input class="duri" type="password" name="userPassword" placeholder="Password">

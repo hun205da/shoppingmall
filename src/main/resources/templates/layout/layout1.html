@@ -117,8 +117,8 @@
         <ul>
             <li><a th:href="@{/layout/basic}"><img src="/img/1.png"></a></li>
             <li><i class="fa fa-search"></i><input id="s" class="search" type="search"></li>
-            <li class="icon"><i class="fa fa-user"></i></li>
-            <li class="icon"><i class="fa fa-shopping-basket"></i></li>
+            <li class="icon"><a th:href="@{/layout/login}"><i class="fa fa-user"></i></a></li>
+            <li class="icon"><a th:href="@{/layout/null}"><i class="fa fa-shopping-basket"></i></a></li>
         </ul>
     </header>
     <div class="content">
@@ -150,7 +150,7 @@
             </div>
             <div id="cs">
                 <p>
-                고객센터 C/S Center<br>
+                    <a th:href="@{/cs/main}">고객센터 C/S Center</a><br>
                 </p>
                 전화 : 02-2069-1931<br>
                 휴대전화 : 010-1234-5678<br>

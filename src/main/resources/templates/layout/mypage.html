@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <th:block th:replace = "~{/layout/layout1 :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/mypage.css" />
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$( document ).ready( function() {
+        $( '#price' ).text( $( '#price' ).text().replace( /\,/g, '' ).replace( /(\d)(?=(?:\d{3})+(?!\d))/g, '$1,' ))
+    });
+    
+</script>
+<body>
+        <div class="container">
+        <h1 style="margin-top: 100px; font-size: 30px; font-family: HY견고딕;">주문내역</h1>
+        <table style="width: 100%; border: 1px solid black;" class="tb">
+            <thead style="background-color: grey;">
+                <tr class="top-bar">
+                    <th class="col-sm-2">일자</th>
+                    <th class="col-sm-6">상품정보</th>
+                    <th class="col-sm-2">상태</th>
+                    <th class="col-sm-2">확인/신청</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="td_detail col-sm-2"> 날짜</div>
+                    </td>
+                    <td>
+                        <div class="td_detail col-sm-6">  <p class="pr">상품이미지</p> <ul class="pd">
+                                                                                            <li class="main">상품명</li>
+                                                                                            <li>수량 :  / 주문번호 : </li>
+                                                                                            <li id="price" value="">1122300 원</li>
+                                                                                        </ul></div>
+                    </td>
+                    <td>
+                        <div class="td_detail col-sm-2"> 배송상태</div>
+                    </td>
+                    <td>
+                        <div class="td_detail col-sm-2"> 리뷰</div>
+                    </td>
+                    
+                
+                
+            </tbody>
+        </table>
+
+
+
+
+
+        </div>
+ </body>
+    </th:block>
+    </th:block>
+</html>

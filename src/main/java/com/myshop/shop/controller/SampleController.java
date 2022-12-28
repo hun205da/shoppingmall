@@ -13,4 +13,8 @@ public class SampleController {
     public void basic(){
 
     }
+    @GetMapping("/mypage")
+    public void mypage(){
+
+    }
 }
