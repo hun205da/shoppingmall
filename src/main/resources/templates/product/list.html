@@ -12,7 +12,7 @@
             <tbody>
                 <tr th:each="dto : ${result.dtoList}">
                     <td class="col-sm-4">[[${dto.productNumber}]]</td>
-                    <td class="col-sm-8">[[${dto.productName}]]<br>[[${dto.productPrice}]]</td>
+                    <td class="col-sm-8"><a th:href="@{/product/view(productNumber=${dto.productNumber}, page=${result.page})}" style="text-decoration: none;">[[${dto.productName}]]</a><br><strong>[[${dto.productPrice}]]</strong></td>
                 </tr>
             </tbody>
         </table>

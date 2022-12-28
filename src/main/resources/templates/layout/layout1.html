@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <th:block th:fragment="setContent(content)">
     <head>
 
@@ -18,6 +19,14 @@
             min-height: 100%;
             position:relative;
             padding-bottom:200px;
+        }
+
+        a {
+            color: #000;
+        }
+
+        a: hover {
+            color : darkblue;
         }
 
         #nav {
@@ -80,31 +89,26 @@
           position: absolute;
           bottom: 0;
           color: #ffffff;
-
         }
-
+        #box {
+            display: flex;
+        }
         #info {
-            position: relative;
+          flex: 0 0 380px;
           text-align: left;
           float: left;
-          padding-right: 150px;
         }
-
-
-
         #time {
-          position: relative;
+            flex: 0 0 380px;
           text-align: left;
           float: left;
-          padding-right: 150px;
-         }
-        #cs {
-            position: relative;
-          text-align: left;
-          float: left;
-
         }
 
+        #cs {
+            flex: 0 0 380px;
+          text-align: left;
+          float: left;
+        }
       </style>
     </head>
 
@@ -123,9 +127,11 @@
 
     </div>
     <footer class="container-fluid">
-        <div class="container">
+        <div id="box" class="container">
             <div id="info">
+                <p>
                 회사정보<br>
+                </p>
                 상호 : 서치트리<br>
                 대표 : 김근우<br>
                 주소 : 서울<br>
@@ -143,7 +149,9 @@
                 </p>
             </div>
             <div id="cs">
+                <p>
                 고객센터 C/S Center<br>
+                </p>
                 전화 : 02-2069-1931<br>
                 휴대전화 : 010-1234-5678<br>
                 이메일 : abcdefg@naver.com<br>
