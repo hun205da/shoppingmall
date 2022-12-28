@@ -4,6 +4,7 @@
 <th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
+        <div class="container">
 
         <h1 class="mt-4">상담 수정 페이지</h1>
 
@@ -56,7 +57,7 @@
         <button type="button" class="btn btn-info listBtn">목록</button>
 
         <button type="button" class="btn btn-danger removeBtn">삭제</button>
-
+        </div>
         <script th:inline="javascript">
 
             var actionForm = $("form"); //form 태그 객체

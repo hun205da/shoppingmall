@@ -4,7 +4,7 @@
 <th:block th:replace="~{/layout/layout1 :: setContent(~{this::text} )}">
 
     <th:block th:fragment="text">
-
+        <div class="container">
         <h1 class="mt-4">FAQ 상담 페이지</h1>
 
         <div class="form-group">
@@ -44,7 +44,7 @@
         <a th:href="@{/faq/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
             <button type="button" class="btn btn-info">목록</button>
         </a>
-
+        </div>
     </th:block>
 
 </th:block>

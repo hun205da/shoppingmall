@@ -4,7 +4,7 @@
 <th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
-
+    <div class="container">
         <h1 class="mt-4">상담 페이지
             <span>
                 <a th:href="@{/cs/register}">
@@ -68,7 +68,7 @@
 
             </tbody>
         </table>
-
+    </div>
         <ul class="pagination h-100 justify-content-center align-items-center">
 
             <li class="page-item " th:if="${result.prev}">
