@@ -113,7 +113,7 @@ public class CsController {
         log.info("post reply.........................................");
         log.info("dto: " + dto);
 
-        service.modify(dto);
+        service.reply(dto);
 
         redirectAttributes.addAttribute("page",requestDTO.getPage());
         redirectAttributes.addAttribute("type",requestDTO.getType());
