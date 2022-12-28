@@ -142,14 +142,8 @@ public class CsServiceImpl implements CsService {
         //검색 조건을 작성하기
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
-        if(type.contains("t")){
+        if(type.contains("t")) {
             conditionBuilder.or(qcs.title.contains(keyword));
-        }
-        if(type.contains("c")){
-            conditionBuilder.or(qcs.text.contains(keyword));
-        }
-        if(type.contains("w")){
-            conditionBuilder.or(qcs.userId.contains(keyword));
         }
 
         //모든 조건 통합
