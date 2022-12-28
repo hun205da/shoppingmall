@@ -1,106 +1,165 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <th:block th:fragment="setContent(content)">
+    <head>
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet"/>
+        <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+        <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <style>
         * { margin: 0; padding: 0; }
-        /* Remove the navbar's default margin-bottom and rounded borders */ 
-        .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
+        #wrap {
+            height: auto;
+            min-height: 100%;
+            position:relative;
+            padding-bottom:200px;
+        }
+
+        a {
+            color: #000;
+        }
+
+        a: hover {
+            color : darkblue;
+        }
+
+        #nav {
           background-color: #f2f2f2;
           height: 100px;
-          position: fixed;
+          position: sticky;
           width: 100%;
+          display: block;
+          top: 0;
+          z-index: 10;
         }
-        
-        .container-fluid ul li {
+
+        #nav ul li {
             list-style-type: none;
             float: left;
 
         }
 
-        .container-fluid ul {
+        #nav ul {
             display: flex;
             justify-content: space-between;
-            width: 70%;
+            width: 70% !important;
+            height: 100px;
             margin: auto;
         }
-        
+
         .icon {
           font-size: 30px;
-          margin: 30px;
+          top: 25px;
+          padding: 0 30px;
+          text-decoration: none;
+          position: relative;
         }
 
         .fa-search {
-          top: 35px;
-          padding-left: 10px;  
+          top: 40px;
+          padding-left: 10px;
           font-size: 30px;
-          position: absolute; 
+          position: absolute;
         }
 
         img {
           width: 250px;
-          margin-right: 150px;
+          margin-right: 50px;
           margin-top: 15px;
         }
-        .search {
+        #s {
           height: 50px;
           margin-top: 25px;
           width: 500px;
           border-radius: 50px;
           margin-right: 250px;
+          padding-left: 40px;
         }
 
-        input {
-          padding-left: 30px;
-        }
-
-        /* Add a gray background color and some padding to the footer */
-        .footer {
-          background-color: #f2f2f2;
+        footer {
+          background-color: #36373a;
           padding: 25px;
           width: 100%;
-          position: fixed;
+          position: absolute;
           bottom: 0;
-          text-align: center;
+          color: #ffffff;
+        }
+        #box {
+            display: flex;
+        }
+        #info {
+          flex: 0 0 380px;
+          text-align: left;
+          float: left;
+        }
+        #time {
+            flex: 0 0 380px;
+          text-align: left;
+          float: left;
         }
 
+        #cs {
+            flex: 0 0 380px;
+          text-align: left;
+          float: left;
+        }
       </style>
+    </head>
 
-</head>
-<div class="header">
-    <div class="navbar">
-        <div class="container-fluid">
-            <ul>
-                <li><img src="/img/1.png"></li>
-                <li><i class="fa fa-search"></i><input class="search" type="search"></li>
-                <li class="icon"><i class="fa fa-user"></i></li>
-                <li class="icon"><i class="fa fa-shopping-basket"></i></li>
-            </ul>
-        </div>
+    <body id="wrap">
+    <header id="nav" class="navbar container-fluid">
+        <ul>
+            <li><a th:href="@{/layout/basic}"><img src="/img/1.png"></a></li>
+            <li><i class="fa fa-search"></i><input id="s" class="search" type="search"></li>
+            <li class="icon"><i class="fa fa-user"></i></li>
+            <li class="icon"><i class="fa fa-shopping-basket"></i></li>
+        </ul>
+    </header>
+    <div class="content">
+        <th:block th:replace = "${content}">
+        </th:block>
 
     </div>
-</div>
-<div class="content">
-    <th:block th:replace = "${content}">
+    <footer class="container-fluid">
+        <div id="box" class="container">
+            <div id="info">
+                <p>
+                회사정보<br>
+                </p>
+                상호 : 서치트리<br>
+                대표 : 김근우<br>
+                주소 : 서울<br>
+                사업자 등록번호 : 123-45-67890<br>
+            </div>
+            <div id="time">
+                <p>
+                    근무시간 : 월 ~ 금 AM 9:00 ~ PM 7:00
+                </p>
+                <p>
+                    점심시간 : PM12 :00 ~ PM 1 : 00
+                </p>
+                <p>
+                    고객센터 : AM 10: 00 ~ PM6 : 00
+                </p>
+            </div>
+            <div id="cs">
+                <p>
+                고객센터 C/S Center<br>
+                </p>
+                전화 : 02-2069-1931<br>
+                휴대전화 : 010-1234-5678<br>
+                이메일 : abcdefg@naver.com<br>
+                카카오톡 ID : abcdefg<br>
+                오전 9시부터 오후 6시까지 상담가능합니다.<br>
+            </div>
+        </div>
+    </footer>
 
-    </th:block>
-
-</div>
-<footer class="footer">
-    <p>Footer Text</p>
-</footer>
-
-
+    </body>
 </th:block>
 </html>

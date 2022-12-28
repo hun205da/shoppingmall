@@ -27,7 +27,7 @@ import java.util.UUID;
 @RestController
 @Log4j2
 public class UploadController {
-    @Value("${org.zerock.upload.path}")
+    @Value("${com.myshop.upload.path}")
     private String uploadPath;
 
     @PostMapping("/uploadAjax")
