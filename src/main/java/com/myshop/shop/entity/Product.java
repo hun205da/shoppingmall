@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Product")
-@ToString(exclude = "ProductCategory")
+@ToString(exclude = "productCategory")
 @Getter
 @Builder
 @AllArgsConstructor

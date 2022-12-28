@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "NonuserOrderRefund")
-@ToString(exclude = "NonuserOrderDetail")
+@ToString(exclude = "nonuserOrderDetail")
 @Getter
 @Builder
 @AllArgsConstructor

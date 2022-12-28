@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 @Entity
 @Table(name = "ProductCategory")
-@ToString(exclude = "Product")
+@ToString(exclude = "product")
 @Getter
 @Builder
 @AllArgsConstructor

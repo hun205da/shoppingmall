@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 @Entity
 @Table(name = "Cart")
-@ToString(exclude = {"Product","UserOrder"})
+@ToString(exclude = {"product","userOrder"})
 @Getter
 @Builder
 @AllArgsConstructor
