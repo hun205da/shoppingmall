@@ -1,53 +1,166 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-
 <th:block th:fragment="setContent(content)">
-
     <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet"/>
+        <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+        <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <style>
+        * { margin: 0; padding: 0; }
+        #wrap {
+            height: auto;
+            min-height: 100%;
+            position:relative;
+            padding-bottom:200px;
+        }
+
+        a {
+            color: #000;
+        }
+
+        a: hover {
+            color : darkblue;
+        }
+
+        #nav {
+          background-color: #f2f2f2;
+          height: 100px;
+          position: sticky;
+          width: 100%;
+          display: block;
+          top: 0;
+          z-index: 10;
+        }
+
+        #nav ul li {
+            list-style-type: none;
+            float: left;
+
+        }
+
+        #nav ul {
+            display: flex;
+            justify-content: space-between;
+            width: 70% !important;
+            height: 100px;
+            margin: auto;
+        }
+
+        .icon {
+          font-size: 30px;
+          top: 25px;
+          padding: 0 30px;
+          text-decoration: none;
+          position: relative;
+        }
+
+        .fa-search {
+          top: 40px;
+          padding-left: 10px;
+          font-size: 30px;
+          position: absolute;
+        }
+
+        img {
+          width: 250px;
+          margin-right: 50px;
+          margin-top: 15px;
+        }
+        #s {
+          height: 50px;
+          margin-top: 25px;
+          width: 500px;
+          border-radius: 50px;
+          margin-right: 250px;
+          padding-left: 40px;
+        }
+
+        footer {
+          background-color: #36373a;
+          padding: 25px;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          color: #ffffff;
+        }
+        #box {
+            display: flex;
+        }
+        #info {
+          flex: 0 0 380px;
+          text-align: left;
+          float: left;
+        }
+        #time {
+            flex: 0 0 380px;
+          text-align: left;
+          float: left;
+        }
+
+        #cs {
+            flex: 0 0 380px;
+          text-align: left;
+          float: left;
+        }
+      </style>
     </head>
 
-<body>
+    <body id="wrap">
+    <header id="nav" class="navbar container-fluid">
+        <ul>
+            <li><a th:href="@{/layout/basic}"><img src="/img/1.png"></a></li>
+            <li><i class="fa fa-search"></i><input id="s" class="search" type="search"></li>
+            <li class="icon"><i class="fa fa-user"></i></li>
+            <li class="icon"><i class="fa fa-shopping-basket"></i></li>
+        </ul>
+    </header>
+    <div class="content">
+        <th:block th:replace = "${content}">
+        </th:block>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    .header {
-        width:100vw;
-        height: 20vh;
-        background-color: aqua;
-    }
-    .content {
-        width: 100vw;
-        height: 70vh;
-        background-color: lightgray;
-    }
-    .footer {
-        width: 100vw;
-        height: 10vh;
-        background-color: green;
-    }
-</style>
+    </div>
+    <footer class="container-fluid">
+        <div id="box" class="container">
+            <div id="info">
+                <p>
+                회사정보<br>
+                </p>
+                상호 : 서치트리<br>
+                대표 : 김근우<br>
+                주소 : 서울<br>
+                사업자 등록번호 : 123-45-67890<br>
+            </div>
+            <div id="time">
+                <p>
+                    근무시간 : 월 ~ 금 AM 9:00 ~ PM 7:00
+                </p>
+                <p>
+                    점심시간 : PM12 :00 ~ PM 1 : 00
+                </p>
+                <p>
+                    고객센터 : AM 10: 00 ~ PM6 : 00
+                </p>
+            </div>
+            <div id="cs">
+                <p>
+                고객센터 C/S Center<br>
+                </p>
+                전화 : 02-2069-1931<br>
+                휴대전화 : 010-1234-5678<br>
+                이메일 : abcdefg@naver.com<br>
+                카카오톡 ID : abcdefg<br>
+                오전 9시부터 오후 6시까지 상담가능합니다.<br>
+            </div>
+        </div>
+    </footer>
 
-
-<div class="header">
-    <h1>HEADER</h1>
-</div>
-<div class="content" >
-
-    <th:block th:replace = "${content}">
-    </th:block>
-
-</div>
-
-<div class="footer">
-    <h1>FOOTER</h1>
-</div>
-
-</body>
+    </body>
 </th:block>
 </html>

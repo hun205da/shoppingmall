@@ -42,6 +42,11 @@ dependencies {
 	implementation group: 'com.querydsl', name: 'querydsl-apt', version: '5.0.0'
 	// https://mvnrepository.com/artifact/net.coobird/thumbnailator
 	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.17'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+
 }
 
 tasks.named('test') {

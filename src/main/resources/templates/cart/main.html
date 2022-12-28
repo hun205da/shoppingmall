@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic1 :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <h1 class="mt-4">장바구니</h1>
+<!--        <form action="/cs/list" method="get" id="searchForm">-->
+<!--            <div class="input-group">-->
+<!--                <input type="hidden" name="page" value = "1">-->
+<!--                <div class="input-group-prepend">-->
+<!--                    <select class="custom-select" name="type">-->
+<!--                        <option th:selected="${pageRequestDTO.type == null}">-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--                        <option value="t" th:selected="${pageRequestDTO.type =='t'}" >제목</option>-->
+<!--                        <option value="c" th:selected="${pageRequestDTO.type =='c'}"  >내용</option>-->
+<!--                        <option value="w"  th:selected="${pageRequestDTO.type =='w'}" >작성자</option>-->
+<!--                        <option value="tc"  th:selected="${pageRequestDTO.type =='tc'}" >제목 + 내용</option>-->
+<!--                        <option value="tcw"  th:selected="${pageRequestDTO.type =='tcw'}" >제목 + 내용 + 작성자</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">-->
+<!--                <div class="input-group-append" id="button-addon4">-->
+<!--                    <button class="btn btn-outline-secondary btn-search" type="button">Search</button>-->
+<!--                    <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">번호</th>
+                <th scope="col">상품이미지</th>
+                <th scope="col">상품명</th>
+                <th scope="col">수량</th>
+                <th scope="col">가격</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">
+                    번호
+                </th>
+                <td>
+                    상품이미지
+                </td>
+                <td>
+                    상품명
+                </td>
+                <td>
+                    수량
+                </td>
+                <td>
+                    가격
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>총액 : ???</h2>
+        <button type="button" class="btn btn-primary">결제</button>
+
+        <button type="button" class="btn btn-info">목록</button>
+
+        <button type="button" class="btn btn-danger">초기화</button>
+
+
+
+<!--        <div class="modal" tabindex="-1" role="dialog">-->
+<!--            <div class="modal-dialog" role="document">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                        <h5 class="modal-title">안내창</h5>-->
+<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                            <span aria-hidden="true">&times;</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                        <p>등록되었습니다</p>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <script th:inline="javascript">
+
+            var msg = [[${msg}]];
+
+            console.log(msg);
+
+            if(msg){
+                $(".modal").modal();
+            }
+            var searchForm = $("#searchForm");
+
+            $('.btn-search').click(function(e){
+
+                searchForm.submit();
+
+            });
+
+            $('.btn-clear').click(function(e){
+
+                searchForm.empty().submit();
+
+            });
+
+
+        </script>
+
+
+
+    </th:block>
+
+</th:block>
