@@ -1,6 +1,7 @@
 package com.myshop.shop.repository;
 
 import com.myshop.shop.dto.UserDTO;
+import com.myshop.shop.entity.Cs;
 import com.myshop.shop.entity.User;
 import com.myshop.shop.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.stream.IntStream;
 
@@ -18,20 +20,19 @@ public class UserRepositoryTests {
   private UserService userservice;
     @Test
     public void insertdummies(){
-        UserDTO user_infodto = UserDTO.builder()
-                .userId("hkd2323231")
-                .userPw("111")
-                .userNickname("다다다")
-                .userPhone("010-8898-4865")
-                .userGrade(50000)
-                .build();
-        UserDTO user_infodto1 = UserDTO.builder()
-                .userId("hkddsdsd31231312")
-                .userPw("111")
-                .userNickname("다다다")
-                .userPhone("010-8898-4865")
-                .build();
-        userservice.userdata(user_infodto);
-        userservice.userdata(user_infodto1);
+
+        IntStream.rangeClosed(1,300).forEach(i -> {
+
+            UserDTO user_infodto = UserDTO.builder()
+                    .userId(i+"Test")
+                    .userPw(i+"Test")
+                    .userName("user"+ i)
+                    .userPhone("010-8898-4"+i)
+                    .userEmail("user"+i+"@naver.com")
+                    .emailCheck(1)
+                    .build();
+            userservice.userdata(user_infodto);
+        });
+
     }
 }
