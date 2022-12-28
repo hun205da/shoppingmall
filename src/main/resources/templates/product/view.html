@@ -13,10 +13,10 @@
 
     <div class="row" style="width: 40%; float: right;" >
         <div class="form-group" style="text-align: center;">
-            <h3 class="page-header"><span>${dto.productName}</span><br><small>${productInfo.productInfo}</small></h3>
+            <h3 class="page-header"><span>[[${dto.productName}]]</span></h3>
         </div>
         <div class="form-group" style="text-align: left;">
-            <label>가격 : </label><span>&nbsp;<span value="${dto.productPrice}" type="number"/></span><span>&nbsp;원</span>
+            <label>가격 : </label>[[${dto.productPrice}]] 원</span>
             <input type="hidden" value="${dto.productPrice}" id="price">
         </div>
         <div class="form-group" style="text-align: left;">
