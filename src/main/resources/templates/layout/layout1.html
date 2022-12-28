@@ -1,106 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+
 <th:block th:fragment="setContent(content)">
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; }
-        /* Remove the navbar's default margin-bottom and rounded borders */ 
-        .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
-          background-color: #f2f2f2;
-          height: 100px;
-          position: fixed;
-          width: 100%;
-        }
-        
-        .container-fluid ul li {
-            list-style-type: none;
-            float: left;
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
 
-        }
+<body>
 
-        .container-fluid ul {
-            display: flex;
-            justify-content: space-between;
-            width: 70%;
-            margin: auto;
-        }
-        
-        .icon {
-          font-size: 30px;
-          margin: 30px;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .header {
+        width:100vw;
+        height: 20vh;
+        background-color: aqua;
+    }
+    .content {
+        width: 100vw;
+        height: 70vh;
+        background-color: lightgray;
+    }
+    .footer {
+        width: 100vw;
+        height: 10vh;
+        background-color: green;
+    }
+</style>
 
-        .fa-search {
-          top: 35px;
-          padding-left: 10px;  
-          font-size: 30px;
-          position: absolute; 
-        }
-
-        img {
-          width: 250px;
-          margin-right: 150px;
-          margin-top: 15px;
-        }
-        .search {
-          height: 50px;
-          margin-top: 25px;
-          width: 500px;
-          border-radius: 50px;
-          margin-right: 250px;
-        }
-
-        input {
-          padding-left: 30px;
-        }
-
-        /* Add a gray background color and some padding to the footer */
-        .footer {
-          background-color: #f2f2f2;
-          padding: 25px;
-          width: 100%;
-          position: fixed;
-          bottom: 0;
-          text-align: center;
-        }
-
-      </style>
-
-</head>
-<div class="header">
-    <div class="navbar">
-        <div class="container-fluid">
-            <ul>
-                <li><img src="/img/1.png"></li>
-                <li><i class="fa fa-search"></i><input class="search" type="search"></li>
-                <li class="icon"><i class="fa fa-user"></i></li>
-                <li class="icon"><i class="fa fa-shopping-basket"></i></li>
-            </ul>
-        </div>
+    <body id="wrap">
+    <header id="nav" class="navbar container-fluid">
+        <ul>
+            <li><a th:href="@{/layout/basic}"><img src="/img/1.png"></a></li>
+            <li><i class="fa fa-search"></i><input id="s" class="search" type="search"></li>
+            <li class="icon"><i class="fa fa-user"></i></li>
+            <li class="icon"><i class="fa fa-shopping-basket"></i></li>
+        </ul>
+    </header>
+    <div class="content">
+        <th:block th:replace = "${content}">
+        </th:block>
 
     </div>
-</div>
-<div class="content">
-    <th:block th:replace = "${content}">
+    <footer class="container-fluid">
+        <div class="container">
+            <div id="info">
+                회사정보<br>
+                상호 : 서치트리<br>
+                대표 : 김근우<br>
+                주소 : 서울<br>
+                사업자 등록번호 : 123-45-67890<br>
+            </div>
+            <div id="time">
+                <p>
+                    근무시간 : 월 ~ 금 AM 9:00 ~ PM 7:00
+                </p>
+                <p>
+                    점심시간 : PM12 :00 ~ PM 1 : 00
+                </p>
+                <p>
+                    고객센터 : AM 10: 00 ~ PM6 : 00
+                </p>
+            </div>
+            <div id="cs">
+                고객센터 C/S Center<br>
+                전화 : 02-2069-1931<br>
+                휴대전화 : 010-1234-5678<br>
+                이메일 : abcdefg@naver.com<br>
+                카카오톡 ID : abcdefg<br>
+                오전 9시부터 오후 6시까지 상담가능합니다.<br>
+            </div>
+        </div>
+    </footer>
 
-    </th:block>
-
-</div>
-<footer class="footer">
-    <p>Footer Text</p>
-</footer>
-
-
+</body>
 </th:block>
 </html>
