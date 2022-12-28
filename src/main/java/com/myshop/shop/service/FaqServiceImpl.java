@@ -21,7 +21,7 @@ import java.util.function.Function;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class FaqServicempl implements FaqService {
+public class FaqServiceImpl implements FaqService {
 
     private final FaqRepository repository;
 
