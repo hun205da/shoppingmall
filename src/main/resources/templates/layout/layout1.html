@@ -81,7 +81,9 @@
           margin-right: 250px;
           padding-left: 40px;
         }
-
+        .content {
+            padding: 0 0 100px 0;
+        }
         footer {
           background-color: #36373a;
           padding: 25px;
@@ -117,8 +119,8 @@
         <ul>
             <li><a th:href="@{/layout/basic}"><img src="/img/1.png"></a></li>
             <li><i class="fa fa-search"></i><input id="s" class="search" type="search"></li>
-            <li class="icon"><a th:href="@{/layout/login}"><i class="fa fa-user"></i></a></li>
-            <li class="icon"><a th:href="@{/layout/null}"><i class="fa fa-shopping-basket"></i></a></li>
+            <li class="icon"><i class="fa fa-user"></i></li>
+            <li class="icon"><i class="fa fa-shopping-basket"></i></li>
         </ul>
     </header>
     <div class="content">
