@@ -1,149 +1,55 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace = "~{/layout/layout1 :: setContent(~{this::content})}">
-    <th:block th:fragment="content">
-<div class="container" style="width: 70%">
+    <th:block th:fragment="content">>
 
-    <div class="row"><h1 class="page-header" style="text-align: center; margin-bottom: 50px;">[[${dto.productName}]]</h1>
-        <input type="hidden" value="${dto.productNumber}" id="productNumber">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/view.css" rel="stylesheet" />
+
+<!-- Page Content-->
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/600x400/dee2e6/6c757d.jpg" alt="..." /></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">[[${dto.productName}]]</h1>
+            <p>[[${dto.productPrice}]]</p>
+            <a class="btn btn-primary" href="#!">주문하기</a>
+            <a class="btn btn-primary" href="#!">장바구니</a>
+        </div>
     </div>
-<!--    <div class="row" style="float: left; text-align: center; width:35%;">-->
-<!--        <img alt="productPhoto" src="/resources/upload${productInfo.filename}" width="150%">-->
-<!--    </div>-->
+    <!-- Call to Action-->
+    <div class="container bg-secondary gx-4 gx-lg-5 my-5 text-center" style="height: 50px;">
+        <div id="menu1" class="col-md-4" style="float: left; line-height: 50px;">
+            <a class="btn text-white">상세설명</a>
+        </div>
+        <div id="menu2" class="col-md-4" style="float: left; line-height: 50px;">
+            <a class="btn text-white">상품평</a>
+        </div>
+        <div id="menu3" class="col-md-4" style="float: left; line-height: 50px;">
+            <a class="btn text-white">상품문의</a>
+        </div>
+    </div>
 
-    <div class="row" style="width: 40%; height: 250px; float: right;" >
-        <div class="form-group" style="text-align: center;">
-            <h3 class="page-header"><span>[[${dto.productName}]]</span></h3>
-        </div>
-        <div class="form-group" style="text-align: left;">
-            <h6>가격 : [[${dto.productPrice}]] 원</span> </h6>
-            <input type="hidden" value="${dto.productPrice}" id="price">
-        </div>
-        <div class="form-group" style="text-align: left;">
-            <label>배송비 : </label><span>&nbsp;2500원</span>
-            <p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
-        </div>
-        <div class="form-group" style="text-align: left;">
-            <label>가격 : </label><span><span var="test" value="${dto.productPrice / 100}" integerOnly="true"/> &nbsp;원</span>
-        </div>
-        <hr>
 
-        <div class="row">
-            <div class="selected_option" style="text-align: right;">
-            </div>
-            <div style="text-align: center;">
-                <button class="btn btn-default">주문하기</button>
-                <button class="btn btn-default">장바구니</button>
-                <button class="btn btn-default">위시리스트</button>
-            </div>
-        </div>
-        <hr>
+    <!-- Content Row-->
+    <div id="tab1" class="container bg-primary px-4 px-lg-5" style="height: 500px;">
+
+    </div>
+    <div id="tab2" class="container bg-primary px-4 px-lg-5" style="height: 500px;">
+
+    </div>
+    <div id="tab3" class="container bg-primary px-4 px-lg-5" style="height: 500px;">
+
     </div>
 </div>
-<div class="container">
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
 
-    <div class="row" style="margin: 50px 0;">
-        <h1 class="jumbotron">
-            <div class="container">
-                <h1>Hello world</h1>
-                <small>This is product page.</small>
-            </div>
-        </h1>
-    </div>
-
-
-    <div class="row nav">
-        <nav id="middle_nav">
-            <ul class="nav nav-tabs nav-justified">
-                <li id="about" style="padding: 0 100px; font-size: 30px;">상품상세</li>
-                <li id="review" style="padding: 0 150px; font-size: 30px;">리뷰</li>
-                <li id="qna" style="padding: 0 150px; font-size: 30px;">상품문의</li>
-            </ul>
-        </nav>
-    </div>
-
-    <div class="row about_product" style="text-align: center;">
-        <h1 class="page-header">상품 상세</h1>
-
-    </div>
-    <div class="list-group reviewList">
-
-    </div>
-
-    <div class="row qnas" style="text-align: center; height: 700px;">
-        <h1 class="page-header">상품 Q&A</h1>
-        /* Q&A 테이블 */
-    </div>
-</div>
-<script>
-        var productId = $("#productId").val();
-
-		$.getJSON("/admin/product/getAttaches/" + productId, function(result) {
-
-			var str = '';
-
-			$(result).each(function() {
-				var data = this;
-
-				str += makeHtmlcode_read(data);
-
-			});
-
-			$(".about_product").append(str);
-
-		});
-
-		$("#review").click(function() {
-
-			var scrollPosition = $(".reviews").offset().top;
-			$("html").animate({scrollTop: scrollPosition}, 500);
-		});
-
-		$("#qna").click(function() {
-
-			var scrollPosition = $(".qnas").offset().top;
-			$("html").animate({scrollTop: scrollPosition}, 500);
-		});
-
-		$("#about").click(function() {
-
-			var scrollPosition = $(".about_product").offset().top;
-			$("html").animate({scrollTop: scrollPosition}, 500);
-		});
-
-		$("#select_count").on('blur', function() {
-			var count = $(this).val();
-			var price = $("#price").val();
-			var opt = $(".opt_select").val();
-
-
-			if (count*price >= 30000) {
-				var shipping = '무료배송';
-				var finalPrice = count*price;
-			} else {
-				var shipping = 2500;
-				var finalPrice = (count*price) + shipping;
-			}
-
-			var str = '';
-
-			str += '<p><label>수량 : </label><span>&nbsp;' + count + '</span>&nbsp;&nbsp;&nbsp;';
-
-			if (opt != 'S' && opt != 'M' && opt != 'L') {
-				str += '<lable></lable>';
-			} else {
-				str += '<label>옵션 : </label><span>&nbsp;' + opt + '</span>&nbsp;&nbsp;&nbsp;';
-			}
-
-			str += '<label>배송비 : </label><span>&nbsp;' + shipping + '</span>&nbsp;&nbsp;&nbsp;';
-			str	+= '<label>가격 : </label><span>&nbsp;' + price + ' 원</span></p>';
-			str += '<h4><label>결제금액 : </label><span>&nbsp;' + finalPrice + ' 원</span></h4>';
-			str += '<span class="glyphicon glyphicon-exclamation-remove"></span>';
-
-			$(".selected_option").html(str);
-		});
-
-    </script>
     </th:block>
 </th:block>
 </html>
