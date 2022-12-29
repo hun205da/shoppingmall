@@ -7,15 +7,14 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/view.css" rel="stylesheet" />
-
 <!-- Page Content-->
 <div class="container px-4 px-lg-5">
     <!-- Heading Row-->
     <div class="row gx-4 gx-lg-5 align-items-center my-5">
-        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/600x400/dee2e6/6c757d.jpg" alt="..." /></div>
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x600/dee2e6/6c757d.jpg" alt="..." /></div>
         <div class="col-lg-5">
             <h1 class="font-weight-light">[[${dto.productName}]]</h1>
-            <p>[[${dto.productPrice}]]</p>
+            <p><strong><a th:text="${#numbers.formatInteger(dto.productPrice, 3, 'COMMA')}">[[${dto.productPrice}]]</a>원</strong></p>
             <a class="btn btn-primary" href="#!">주문하기</a>
             <a class="btn btn-primary" href="#!">장바구니</a>
         </div>
@@ -38,11 +37,47 @@
     <div id="tab1" class="container bg-primary px-4 px-lg-5" style="height: 500px;">
 
     </div>
-    <div id="tab2" class="container bg-primary px-4 px-lg-5" style="height: 500px;">
-
+    <div id="tab2" class="container bg-primary px-4 px-lg-5" style="height: 500px; display: none;">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>이미지</td>
+                    <td class="col-sm-8">
+                        <a id="pn" style="text-decoration: none;">[[${dto.productName}]]</a><br>
+                        <span>리뷰</span>
+                    </td>
+                    <td>
+                        <span>작성자</span><br>
+                        <span>등록일</span><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div id="tab3" class="container bg-primary px-4 px-lg-5" style="height: 500px;">
+    <div id="tab3" class="container bg-primary px-4 px-lg-5" style="height: 500px; display: none;">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성자</th>
+                <th scope="col">등록일</th>
+            </tr>
+            </thead>
+            <tbody>
 
+            <tr>
+                <th scope="row">
+                    넘버
+                </th>
+                <td>
+                    <a>제목</a>
+                </td>
+                <td>작성자</td>
+                <td>등록일</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
     <!-- Bootstrap core JS-->

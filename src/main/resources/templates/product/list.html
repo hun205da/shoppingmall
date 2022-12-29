@@ -2,17 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace = "~{/layout/layout1 :: setContent(~{this::content})}">
     <th:block th:fragment="content">
+    <script type="text/javascript">
 
+    </script>
 <div class="container">
     <div class="py-5 text-center">
         <h2>상품 목록</h2>
     </div>
     <div>
+        <span>
+            <a th:href="@{/product/register}">
+                <button type="button" class="btn btn-outline-primary">상품등록</button>
+            </a>
+        </span>
         <table class="table">
             <tbody>
                 <tr th:each="dto : ${result.dtoList}">
                     <td class="col-sm-4">[[${dto.productNumber}]]</td>
-                    <td class="col-sm-8"><a th:href="@{/product/view(productNumber=${dto.productNumber}, page=${result.page})}" style="text-decoration: none;">[[${dto.productName}]]</a><br><strong>[[${dto.productPrice}]]</strong></td>
+                    <td class="col-sm-8"><a id="pn" th:href="@{/product/view(productNumber=${dto.productNumber}, page=${result.page})}" style="text-decoration: none;">[[${dto.productName}]]</a><br>
+                        <strong th:text="${#numbers.formatInteger(dto.productPrice, 3, 'COMMA')}">[[${dto.productPrice}]]</strong>원</td>
                 </tr>
             </tbody>
         </table>

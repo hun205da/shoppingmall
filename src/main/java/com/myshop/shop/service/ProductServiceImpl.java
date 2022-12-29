@@ -4,8 +4,10 @@ import com.myshop.shop.dto.PageRequestDTO;
 import com.myshop.shop.dto.PageResultDTO;
 import com.myshop.shop.dto.ProductDTO;
 import com.myshop.shop.entity.Product;
+import com.myshop.shop.entity.ProductImage;
 import com.myshop.shop.entity.QCs;
 import com.myshop.shop.entity.QProduct;
+import com.myshop.shop.repository.ProductImageRepository;
 import com.myshop.shop.repository.ProductRepository;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -15,7 +17,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -25,14 +30,19 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository repository;
+    private final ProductImageRepository imageRepository;
 
+    @Transactional
     @Override
     public Long register(ProductDTO dto) {
-        Product entity = dtoToEntity(dto);
-
-        repository.save(entity);
-
-        return entity.getProductNumber();
+        Map<String, Object> entityMap = dtoToEntity(dto);
+        Product product = (Product) entityMap.get("product");
+        List<ProductImage> productImageList = (List<ProductImage>) entityMap.get("imgList");
+        repository.save(product);
+        productImageList.forEach(productImage -> {
+            imageRepository.save(productImage);
+        });
+        return product.getProductNumber();
     }
 
     @Override
