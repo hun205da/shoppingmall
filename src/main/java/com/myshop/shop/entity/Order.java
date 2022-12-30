@@ -1,6 +1,6 @@
 package com.myshop.shop.entity;
 
-import com.myshop.shop.config.OrderStatus;
+import com.myshop.shop.constant.OrderStatus;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;

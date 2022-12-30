@@ -1,4 +1,4 @@
-package com.myshop.shop.config;
+package com.myshop.shop.constant;
 
 public enum OrderStatus {
     ORDER, CANCEL
