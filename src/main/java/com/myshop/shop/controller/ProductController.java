@@ -20,20 +20,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ProductController {
     private final ProductService service;
 
-    @GetMapping("/")
-    public String index() {
-        return "redirect:/product/list";
-    }
+//    @GetMapping("/")
+//    public String index() {
+//        return "redirect:/product/list";
+//    }
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
         model.addAttribute("result", service.getList(pageRequestDTO));
     }
 
-    @GetMapping("/view")
-    public void read(long productNumber, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
-        ProductDTO dto = service.read(productNumber);
-        model.addAttribute("dto", dto);
+
+
+    @PostMapping("/view")
+    public String read(ProductDTO productDTO, RedirectAttributes redirectAttributes) {
+        Long productNumber = service.register(productDTO);
+        redirectAttributes.addFlashAttribute("msg", productNumber);
+        return "redirect: /product/list";
     }
 
     @GetMapping("/register")
@@ -47,4 +50,6 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("msg", productNumber);
         return "redirect: /product/list";
     }
+
 }
+

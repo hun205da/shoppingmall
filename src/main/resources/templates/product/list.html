@@ -2,9 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace = "~{/layout/layout1 :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-    <script type="text/javascript">
 
-    </script>
 <div class="container">
     <div class="py-5 text-center">
         <h2>상품 목록</h2>
@@ -19,7 +17,7 @@
             <tbody>
                 <tr th:each="dto : ${result.dtoList}">
                     <td class="col-sm-4">[[${dto.productNumber}]]</td>
-                    <td class="col-sm-8"><a id="pn" th:href="@{/product/view(productNumber=${dto.productNumber}, page=${result.page})}" style="text-decoration: none;">[[${dto.productName}]]</a><br>
+                    <td class="col-sm-8"><a id="pn" th:href="@{/product/view(productNumber=${dto.productNumber}, page=${result.page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}" style="text-decoration: none;">[[${dto.productName}]]</a><br>
                         <strong th:text="${#numbers.formatInteger(dto.productPrice, 3, 'COMMA')}">[[${dto.productPrice}]]</strong>원</td>
                 </tr>
             </tbody>
@@ -27,18 +25,48 @@
     </div>
     <ul class="pagination h-100 justify-content-center align-items-center">
         <li class="page-item " th:if="${result.prev}">
-            <a class="page-link" th:href="@{/product/list(page= ${result.start -1})}" tabindex="-1">Previous</a>
+            <a class="page-link" th:href="@{/product/list(page= ${result.start -1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}" tabindex="-1">Previous</a>
         </li>
         <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-            <a class="page-link" th:href="@{/product/list(page = ${page})}">
+            <a class="page-link" th:href="@{/product/list(page = ${page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
                 [[${page}]]
             </a>
         </li>
         <li class="page-item" th:if="${result.next}">
-            <a class="page-link" th:href="@{/product/list(page= ${result.end + 1} )}">Next</a>
+            <a class="page-link" th:href="@{/product/list(page= ${result.end + 1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">Next</a>
         </li>
     </ul>
 </div> <!-- /container -->
+        <script th:inline="javascript">
+
+             var msg = [[${msg}]];
+
+            console.log(msg);
+
+            if(msg){
+                $(".modal").modal();
+            }
+            var searchForm = $("#searchForm");
+
+            $('.btn-search').click(function(e){
+
+                searchForm.submit();
+
+            });
+
+            $('.btn-clear').click(function(e){
+
+                searchForm.empty().submit();
+
+            });
+
+            $('.search').(function(e){
+                if(e.keyCode == 13){
+                    searchForm.submit();
+                }
+            }
+
+        </script>
     </th:block>
 </th:block>
 </html>

@@ -79,8 +79,15 @@
   <div class="bg">
     <div class="img">
       <center><img src="/img/1.png" style="margin-top: 300px;"></center>
+<form action="/product/list" method="get" id="search">
+    <div class="input-group">
+        <input type="hidden" name="page" value = "1">
+        <div class="input-group-prepend">
     <div class="search-mode">
-    <input type="text" >
+    <select class="custom-select" name="type" style="display: none;">
+        <option value="t" th:selected = "${pageRequestDTO.type == 't'}">제목</option>
+    </select>
+    <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
 
     <div class="icon">
         <div class="search">

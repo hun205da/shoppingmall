@@ -48,7 +48,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public PageResultDTO<ProductDTO, Product> getList(PageRequestDTO requestDTO) {
         Pageable pageable = requestDTO.getPageable(Sort.by("productNumber").descending());
-        Page<Product> result = repository.findAll(pageable);
+        BooleanBuilder booleanBuilder = getSearch(requestDTO);
+        Page<Product> result = repository.findAll(booleanBuilder, pageable);
         Function<Product, ProductDTO> fn = (entity -> entityToDto(entity));
         return new PageResultDTO<>(result, fn);
     }
@@ -62,32 +63,24 @@ public class ProductServiceImpl implements ProductService {
 
     private BooleanBuilder getSearch(PageRequestDTO requestDTO){
 
-        String type = requestDTO.getType();
-
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
         QProduct qProduct = QProduct.product;
 
         String keyword = requestDTO.getKeyword();
 
-        BooleanExpression expression = qProduct.productNumber.gt(0L); // no > 0 조건만 생성
+        String type = requestDTO.getType();
 
-        booleanBuilder.and(expression);
+
 
         if(type == null || type.trim().length() == 0){ //검색 조건이 없는 경우
             return booleanBuilder;
         }
-
-
-        //검색 조건을 작성하기
-        BooleanBuilder conditionBuilder = new BooleanBuilder();
-
-        if(type.contains("t")) {
-            conditionBuilder.or(qProduct.productName.contains(keyword));
+        //모든 조건 통합
+        if(type.contains("t")){
+            booleanBuilder.and(qProduct.productName.contains(keyword));
         }
 
-        //모든 조건 통합
-        booleanBuilder.and(conditionBuilder);
 
         return booleanBuilder;
     }

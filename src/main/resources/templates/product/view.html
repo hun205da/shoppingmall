@@ -9,16 +9,21 @@
     <link href="/css/view.css" rel="stylesheet" />
 <!-- Page Content-->
 <div class="container px-4 px-lg-5">
-    <!-- Heading Row-->
-    <div class="row gx-4 gx-lg-5 align-items-center my-5">
-        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x600/dee2e6/6c757d.jpg" alt="..." /></div>
-        <div class="col-lg-5">
-            <h1 class="font-weight-light">[[${dto.productName}]]</h1>
-            <p><strong><a th:text="${#numbers.formatInteger(dto.productPrice, 3, 'COMMA')}">[[${dto.productPrice}]]</a>원</strong></p>
+    <!--
+
+
+    <div class="form-group row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="form-control col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x600/dee2e6/6c757d.jpg" alt="..." /></div>
+        <div class="form-control col-lg-5">
+            <h1 class="font-weight-light" name="productName" th:value="${dto.productName}"></h1>
+            <p class="form-control" name="productPrice"><strong><a th:text="${#numbers.formatInteger(dto.productPrice, 3, 'COMMA')}" th:value="${dto.productPrice"></a>원</strong></p>
             <a class="btn btn-primary" href="#!">주문하기</a>
             <a class="btn btn-primary" href="#!">장바구니</a>
         </div>
     </div>
+
+
+    Heading Row-->
     <!-- Call to Action-->
     <div class="container bg-secondary gx-4 gx-lg-5 my-5 text-center" style="height: 50px;">
         <div id="menu1" class="col-md-4" style="float: left; line-height: 50px;">

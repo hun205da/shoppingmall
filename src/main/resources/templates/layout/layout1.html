@@ -17,12 +17,22 @@
 
     <body id="wrap">
     <header id="nav" class="navbar container-fluid">
+        <form action="/product/list" method="get" id="search">
+            <div class="input-group">
+                <input type="hidden" name="page" value = "1">
+                <div class="input-group-prepend">
         <ul>
             <li><a th:href="@{/layout/basic}"><img src="/img/1.png"></a></li>
-            <li><i class="fa fa-search"></i><input id="s" class="search" type="search"></li>
-            <li class="icon"><a href="#" style="color: #000;"><i class="fa fa-user"></i></a></li>
+            <select class="custom-select" name="type" style="display: none;">
+                <option value="t" th:selected = "${pageRequestDTO.type == 't'}">제목</option>
+            </select>
+            <li><i class="fa fa-search"></i><input id="s" class="form-control search" name="keyword" th:value="${pageRequestDTO.keyword}"></li>
+            <li class="icon"><a th:href="@{/layout/mypage}" style="color: #000;"><i class="fa fa-user"></i></a></li>
             <li class="icon"><a href="#" style="color: #000;"><i class="fa fa-shopping-basket"></i></a></li>
         </ul>
+                </div>
+            </div>
+        </form>
     </header>
     <div class="content">
         <th:block th:replace = "${content}">
@@ -65,5 +75,6 @@
     </footer>
 
     </body>
+
 </th:block>
 </html>
