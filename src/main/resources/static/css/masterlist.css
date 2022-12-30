@@ -76,7 +76,7 @@
   }
 }
 body {
-  text-decoration: none; 
+  text-decoration: none;
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -1138,7 +1138,7 @@ progress {
     flex: 0 0 auto;
     width: 20%;
   }
-  
+
   .row-cols-md-6 > * {
     flex: 0 0 auto;
     width: 16.6666666667%;
@@ -11292,7 +11292,7 @@ textarea.form-control-lg {
 }
 
 #sidebar-wrapper {
-  min-height: 100vh;
+  min-height: 69vh;
   margin-left: -15rem;
   transition: margin 0.25s ease-out;
 }
@@ -11327,5 +11327,5 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -15rem;
   }
-  
+
 }
