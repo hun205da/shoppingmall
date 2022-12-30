@@ -13,4 +13,9 @@ public class ThymeleafExController {
         model.addAttribute("data", "타임리프 예제입니다.");
         return "thymeleafEx/thymeleafEx01";
     }
+    @GetMapping(value = "/ex07")
+    public String thymeleafExample07(Model model){
+        model.addAttribute("data", "타임리프 예제입니다.");
+        return "thymeleafEx/thymeleafEx07";
+    }
 }
