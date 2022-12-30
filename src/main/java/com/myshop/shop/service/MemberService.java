@@ -18,7 +18,7 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
-    public Member saveMamber(Member member){
+    public Member saveMember(Member member){
         validateDuplicateMember(member);
         return memberRepository.save(member);
     }
@@ -32,6 +32,7 @@ public class MemberService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
         Member member = memberRepository.findByEmail(email);
 
         if(member == null){

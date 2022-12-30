@@ -29,15 +29,15 @@ public class MemberController {
     }
 
     @PostMapping(value = "/new")
-//    책 4.3 참고
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()) {
+
+        if(bindingResult.hasErrors()){
             return "member/memberForm";
         }
 
-        try{
+        try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
-            memberService.saveMamber(member);
+            memberService.saveMember(member);
         } catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "member/memberForm";
