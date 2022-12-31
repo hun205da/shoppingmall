@@ -7,7 +7,8 @@
 
 <th:block th:replace="~{/layout/basic1 :: setContent(~{this::content} )}">
 
-  <th:block th:fragment="content" style="margin-left:25%;margin-right:25%">
+  <th:block th:fragment="content" >
+    <div class="container" style="margin-left:25%;margin-right:25%">
 
     <input type="hidden" id="itemId" th:value="${item.id}">
 
@@ -63,6 +64,7 @@
 
     <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
       <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
+    </div>
     </div>
     <style>
         .mgb-15{

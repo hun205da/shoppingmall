@@ -8,6 +8,7 @@
 <th:block th:replace="~{/layout/basic1 :: setContent(~{this::content} )}">
 
   <th:block th:fragment="content">
+    <div class="container" style="margin-left:20%;margin-right:20%">
 
     <h2 class="mb-4">
       장바구니 목록
@@ -74,6 +75,7 @@
         <button type="button" class="btn btn-primary btn-lg" onclick="orders()">주문하기</button>
       </div>
 
+    </div>
     </div>
     <style>
         .content-mg{

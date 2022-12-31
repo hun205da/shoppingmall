@@ -8,7 +8,7 @@
 <th:block th:replace="~{/layout/basic1 :: setContent(~{this::content} )}">
 
   <th:block th:fragment="content">
-
+    <div class="container">
     <h2 class="mb-4">
       구매 이력
     </h2>
@@ -64,8 +64,9 @@
 
       </ul>
     </div>
+    </div>
     <style>
-        .content-mg{
+        .container{
             margin-left:30%;
             margin-right:30%;
             margin-top:2%;
