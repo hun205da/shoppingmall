@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -51,20 +53,20 @@ public class ItemController {
         return "redirect:/";
     }
 
-//    @GetMapping(value = "/admin/item/{itemId}")
-//    public String itemDtl(@PathVariable("itemId") Long itemId, Model model){
-//
-//        try {
-//            ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
-//            model.addAttribute("itemFormDto", itemFormDto);
-//        } catch(EntityNotFoundException e){
-//            model.addAttribute("errorMessage", "존재하지 않는 상품 입니다.");
-//            model.addAttribute("itemFormDto", new ItemFormDto());
-//            return "item/itemForm";
-//        }
-//
-//        return "item/itemForm";
-//    }
+    @GetMapping(value = "/admin/item/{itemId}")
+    public String itemDtl(@PathVariable("itemId") Long itemId, Model model){
+
+        try {
+            ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+            model.addAttribute("itemFormDto", itemFormDto);
+        } catch(EntityNotFoundException e){
+            model.addAttribute("errorMessage", "존재하지 않는 상품 입니다.");
+            model.addAttribute("itemFormDto", new ItemFormDto());
+            return "item/itemForm";
+        }
+
+        return "item/itemForm";
+    }
 
 //    @PostMapping(value = "/admin/item/{itemId}")
 //    public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
