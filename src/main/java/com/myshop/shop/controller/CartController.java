@@ -1,5 +1,6 @@
 package com.myshop.shop.controller;
 
+import com.myshop.shop.dto.CartDetailDto;
 import com.myshop.shop.dto.CartItemDto;
 import com.myshop.shop.service.CartService;
 import lombok.RequiredArgsConstructor;
@@ -57,26 +58,26 @@ public class CartController {
 
         return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
     }
-//
-//    @GetMapping(value = "/cart")
-//    public String orderHist(Principal principal, Model model){
-//        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
-//        model.addAttribute("cartItems", cartDetailList);
-//        return "cart/cartList";
-//    }
-//
-//    @PatchMapping(value = "/cartItem/{cartItemId}")
-//    public @ResponseBody ResponseEntity updateCartItem(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal){
-//
-//        if(count <= 0){
-//            return new ResponseEntity<String>("최소 1개 이상 담아주세요", HttpStatus.BAD_REQUEST);
-//        } else if(!cartService.validateCartItem(cartItemId, principal.getName())){
-//            return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
-//        }
-//
-//        cartService.updateCartItemCount(cartItemId, count);
-//        return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
-//    }
+
+    @GetMapping(value = "/cart")
+    public String orderHist(Principal principal, Model model){
+        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
+        model.addAttribute("cartItems", cartDetailList);
+        return "cart/cartList";
+    }
+
+    @PatchMapping(value = "/cartItem/{cartItemId}")
+    public @ResponseBody ResponseEntity updateCartItem(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal){
+
+        if(count <= 0){
+            return new ResponseEntity<String>("최소 1개 이상 담아주세요", HttpStatus.BAD_REQUEST);
+        } else if(!cartService.validateCartItem(cartItemId, principal.getName())){
+            return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
+        }
+
+        cartService.updateCartItemCount(cartItemId, count);
+        return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+    }
 //
 //    @DeleteMapping(value = "/cartItem/{cartItemId}")
 //    public @ResponseBody ResponseEntity deleteCartItem(@PathVariable("cartItemId") Long cartItemId, Principal principal){

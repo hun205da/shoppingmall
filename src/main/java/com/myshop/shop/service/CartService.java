@@ -1,6 +1,7 @@
 package com.myshop.shop.service;
 
 
+import com.myshop.shop.dto.CartDetailDto;
 import com.myshop.shop.dto.CartItemDto;
 import com.myshop.shop.entity.Cart;
 import com.myshop.shop.entity.CartItem;
@@ -56,42 +57,42 @@ public class CartService {
             return cartItem.getId();
         }
     }
-//
-//    @Transactional(readOnly = true)
-//    public List<CartDetailDto> getCartList(String email){
-//
-//        List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
-//
-//        Member member = memberRepository.findByEmail(email);
-//        Cart cart = cartRepository.findByMemberId(member.getId());
-//        if(cart == null){
-//            return cartDetailDtoList;
-//        }
-//
-//        cartDetailDtoList = cartItemRepository.findCartDetailDtoList(cart.getId());
-//        return cartDetailDtoList;
-//    }
-//
-//    @Transactional(readOnly = true)
-//    public boolean validateCartItem(Long cartItemId, String email){
-//        Member curMember = memberRepository.findByEmail(email);
-//        CartItem cartItem = cartItemRepository.findById(cartItemId)
-//                .orElseThrow(EntityNotFoundException::new);
-//        Member savedMember = cartItem.getCart().getMember();
-//
-//        if(!StringUtils.equals(curMember.getEmail(), savedMember.getEmail())){
-//            return false;
-//        }
-//
-//        return true;
-//    }
-//
-//    public void updateCartItemCount(Long cartItemId, int count){
-//        CartItem cartItem = cartItemRepository.findById(cartItemId)
-//                .orElseThrow(EntityNotFoundException::new);
-//
-//        cartItem.updateCount(count);
-//    }
+
+    @Transactional(readOnly = true)
+    public List<CartDetailDto> getCartList(String email){
+
+        List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
+
+        Member member = memberRepository.findByEmail(email);
+        Cart cart = cartRepository.findByMemberId(member.getId());
+        if(cart == null){
+            return cartDetailDtoList;
+        }
+
+        cartDetailDtoList = cartItemRepository.findCartDetailDtoList(cart.getId());
+        return cartDetailDtoList;
+    }
+
+    @Transactional(readOnly = true)
+    public boolean validateCartItem(Long cartItemId, String email){
+        Member curMember = memberRepository.findByEmail(email);
+        CartItem cartItem = cartItemRepository.findById(cartItemId)
+                .orElseThrow(EntityNotFoundException::new);
+        Member savedMember = cartItem.getCart().getMember();
+
+        if(!StringUtils.equals(curMember.getEmail(), savedMember.getEmail())){
+            return false;
+        }
+
+        return true;
+    }
+
+    public void updateCartItemCount(Long cartItemId, int count){
+        CartItem cartItem = cartItemRepository.findById(cartItemId)
+                .orElseThrow(EntityNotFoundException::new);
+
+        cartItem.updateCount(count);
+    }
 //
 //    public void deleteCartItem(Long cartItemId) {
 //        CartItem cartItem = cartItemRepository.findById(cartItemId)
