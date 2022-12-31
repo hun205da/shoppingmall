@@ -2,8 +2,11 @@ package com.myshop.shop.repository;
 
 import com.myshop.shop.constant.ItemSellStatus;
 import com.myshop.shop.dto.ItemSearchDto;
+import com.myshop.shop.dto.MainItemDto;
+import com.myshop.shop.dto.QMainItemDto;
 import com.myshop.shop.entity.Item;
 import com.myshop.shop.entity.QItem;
+import com.myshop.shop.entity.QItemImg;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
@@ -84,43 +87,43 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return new PageImpl<>(content, pageable, total);
     }
 
-//    private BooleanExpression itemNmLike(String searchQuery){
-//        return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
-//    }
-//
-//    @Override
-//    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
-//        QItem item = QItem.item;
-//        QItemImg itemImg = QItemImg.itemImg;
-//
-//        List<MainItemDto> content = queryFactory
-//                .select(
-//                        new QMainItemDto(
-//                                item.id,
-//                                item.itemNm,
-//                                item.itemDetail,
-//                                itemImg.imgUrl,
-//                                item.price)
-//                )
-//                .from(itemImg)
-//                .join(itemImg.item, item)
-//                .where(itemImg.repimgYn.eq("Y"))
-//                .where(itemNmLike(itemSearchDto.getSearchQuery()))
-//                .orderBy(item.id.desc())
-//                .offset(pageable.getOffset())
-//                .limit(pageable.getPageSize())
-//                .fetch();
-//
-//        long total = queryFactory
-//                .select(Wildcard.count)
-//                .from(itemImg)
-//                .join(itemImg.item, item)
-//                .where(itemImg.repimgYn.eq("Y"))
-//                .where(itemNmLike(itemSearchDto.getSearchQuery()))
-//                .fetchOne()
-//                ;
-//
-//        return new PageImpl<>(content, pageable, total);
-//    }
+    private BooleanExpression itemNmLike(String searchQuery){
+        return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemNm.like("%" + searchQuery + "%");
+    }
+
+    @Override
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        QItem item = QItem.item;
+        QItemImg itemImg = QItemImg.itemImg;
+
+        List<MainItemDto> content = queryFactory
+                .select(
+                        new QMainItemDto(
+                                item.id,
+                                item.itemNm,
+                                item.itemDetail,
+                                itemImg.imgUrl,
+                                item.price)
+                )
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"))
+                .where(itemNmLike(itemSearchDto.getSearchQuery()))
+                .orderBy(item.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        long total = queryFactory
+                .select(Wildcard.count)
+                .from(itemImg)
+                .join(itemImg.item, item)
+                .where(itemImg.repimgYn.eq("Y"))
+                .where(itemNmLike(itemSearchDto.getSearchQuery()))
+                .fetchOne()
+                ;
+
+        return new PageImpl<>(content, pageable, total);
+    }
 
 }
