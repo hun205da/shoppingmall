@@ -3,6 +3,7 @@ package com.myshop.shop.service;
 import com.myshop.shop.dto.ItemFormDto;
 import com.myshop.shop.dto.ItemImgDto;
 import com.myshop.shop.dto.ItemSearchDto;
+import com.myshop.shop.dto.MainItemDto;
 import com.myshop.shop.entity.Item;
 import com.myshop.shop.entity.ItemImg;
 import com.myshop.shop.repository.ItemImgRepository;
@@ -88,9 +89,10 @@ public class ItemService {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 
-//    @Transactional(readOnly = true)
-//    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
-//        return itemRepository.getMainItemPage(itemSearchDto, pageable);
-//    }
+    //상품 조회 메소드
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
+    }
 
 }
