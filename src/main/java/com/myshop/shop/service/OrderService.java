@@ -2,10 +2,9 @@ package com.myshop.shop.service;
 
 
 import com.myshop.shop.dto.OrderDto;
-import com.myshop.shop.entity.Item;
-import com.myshop.shop.entity.Member;
-import com.myshop.shop.entity.Order;
-import com.myshop.shop.entity.OrderItem;
+import com.myshop.shop.dto.OrderHistDto;
+import com.myshop.shop.dto.OrderItemDto;
+import com.myshop.shop.entity.*;
 import com.myshop.shop.repository.ItemImgRepository;
 import com.myshop.shop.repository.ItemRepository;
 import com.myshop.shop.repository.MemberRepository;
@@ -34,6 +33,7 @@ public class OrderService {
     private final MemberRepository memberRepository;
 
     private final OrderRepository orderRepository;
+    private final ItemImgRepository itemImgRepository;
 
     public Long order(OrderDto orderDto, String email){
 
@@ -50,32 +50,32 @@ public class OrderService {
 
         return order.getId();
     }
-//
-//    @Transactional(readOnly = true)
-//    public Page<OrderHistDto> getOrderList(String email, Pageable pageable) {
-//
-//        List<Order> orders = orderRepository.findOrders(email, pageable);
-//        Long totalCount = orderRepository.countOrder(email);
-//
-//        List<OrderHistDto> orderHistDtos = new ArrayList<>();
-//
-//        for (Order order : orders) {
-//            OrderHistDto orderHistDto = new OrderHistDto(order);
-//            List<OrderItem> orderItems = order.getOrderItems();
-//            for (OrderItem orderItem : orderItems) {
-//                ItemImg itemImg = itemImgRepository.findByItemIdAndRepimgYn
-//                        (orderItem.getItem().getId(), "Y");
-//                OrderItemDto orderItemDto =
-//                        new OrderItemDto(orderItem, itemImg.getImgUrl());
-//                orderHistDto.addOrderItemDto(orderItemDto);
-//            }
-//
-//            orderHistDtos.add(orderHistDto);
-//        }
-//
-//        return new PageImpl<OrderHistDto>(orderHistDtos, pageable, totalCount);
-//    }
-//
+
+    @Transactional(readOnly = true)
+    public Page<OrderHistDto> getOrderList(String email, Pageable pageable) {
+
+        List<Order> orders = orderRepository.findOrders(email, pageable);
+        Long totalCount = orderRepository.countOrder(email);
+
+        List<OrderHistDto> orderHistDtos = new ArrayList<>();
+
+        for (Order order : orders) {
+            OrderHistDto orderHistDto = new OrderHistDto(order);
+            List<OrderItem> orderItems = order.getOrderItems();
+            for (OrderItem orderItem : orderItems) {
+                ItemImg itemImg = itemImgRepository.findByItemIdAndRepimgYn
+                        (orderItem.getItem().getId(), "Y");
+                OrderItemDto orderItemDto =
+                        new OrderItemDto(orderItem, itemImg.getImgUrl());
+                orderHistDto.addOrderItemDto(orderItemDto);
+            }
+
+            orderHistDtos.add(orderHistDto);
+        }
+
+        return new PageImpl<OrderHistDto>(orderHistDtos, pageable, totalCount);
+    }
+
 //    @Transactional(readOnly = true)
 //    public boolean validateOrder(Long orderId, String email){
 //        Member curMember = memberRepository.findByEmail(email);
