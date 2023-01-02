@@ -111,7 +111,7 @@
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
-            var url = "/order";
+            var url = "/cart";
             var paramData = {
                 itemId : $("#itemId").val(),
                 count : $("#count").val()
@@ -131,8 +131,8 @@
                 dataType : "json",
                 cache   : false,
                 success  : function(result, status){
-                    alert("주문이 완료 되었습니다.");
-                    location.href='/';
+                    alert("장바구니에 담았습니다. 주문 화면으로 이동합니다.");
+                    location.href='/cart';
                 },
                 error : function(jqXHR, status, error){
 
@@ -172,7 +172,7 @@
                 cache   : false,
                 success  : function(result, status){
                     alert("상품을 장바구니에 담았습니다.");
-                    location.href='/';
+                    location.href='/list';
                 },
                 error : function(jqXHR, status, error){
 
