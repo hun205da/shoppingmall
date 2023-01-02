@@ -1,5 +1,6 @@
 package com.myshop.shop.dto;
 
+import com.myshop.shop.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class CsDTO {
     private Long no;
     private String title;
     private String text;
-    private String userId;
+    private Member member;
     private String category;
     private String reply;
     private LocalDateTime regDate, modDate;

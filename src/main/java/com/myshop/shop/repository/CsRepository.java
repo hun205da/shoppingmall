@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 public interface CsRepository extends JpaRepository<Cs, Long>, QuerydslPredicateExecutor<Cs> {
-
-
+    Cs findByMemberId(Long memberId);
 }
