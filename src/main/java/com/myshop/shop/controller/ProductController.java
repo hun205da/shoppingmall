@@ -30,7 +30,10 @@ public class ProductController {
         model.addAttribute("result", service.getList(pageRequestDTO));
     }
 
+    @GetMapping("/view")
+    public void read(){
 
+    }
 
     @PostMapping("/view")
     public String read(ProductDTO productDTO, RedirectAttributes redirectAttributes) {

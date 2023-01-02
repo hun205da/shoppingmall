@@ -11,50 +11,26 @@
         }
         .search-mode {
               position: relative;
-              width: 400px;
-              height: 30px;
-              margin: 10px auto;
+              width: 50%;
+              margin: auto;
         }
         input {
-              border: 3px solid #F1F1F1;
-              border-radius: 50px;
-              width: 100%;
-              height: 150%;
-              padding-inline-start: 35px;
 
-              margin-left: -20px;
-              font-size : 20px;
-
+          height: 50px;
+          margin-top: 25px;
+          width: 500px;
+          border-radius: 50px;
         }
 
-        .icon {
-              width: 20px;
-              display: flex;
-              justify-content: space-between;
-              position: absolute;
-              margin-left: -20px;
-              top: 3px;
-              right: 10px;
-              left: 10px;
-              font-size: 30px;
-
-              z-index: 0;
-
-
+        #m {
+            padding-top: 300px;
         }
 
-        .search {
-          color: #808080;
-        }
-
-        .plus-option i {
-          display: inline-block;
-          margin-left: 5px;
-        }
-
-
-        .plus-option i:nth-child(2){
-          color: #4F86EC;
+        .fa-search {
+          top: 35px;
+          padding-left: 10px;
+          font-size: 30px;
+          position: absolute;
         }
 
         .bg {
@@ -66,42 +42,105 @@
           width: 100%;
           height: 100%;
           margin: 0 auto;
+          padding: auto;
+          align-items: center;
+          text-align: center;
 
           background-image: url("/img/3.jpg");
           background-repeat: no-repeat;
           background-position: center center;
           background-size: 100% 100%;
         }
+
+
+
+        .dropbtn {
+          padding: 16px;
+          font-size: 30px;
+          color: black;
+          border: none;
+          cursor: pointer;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          float: right;
+          padding: 30px;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown a:hover {background-color: #ddd;}
+
+        .show {display: block;}
+
     </style>
 </head>
 
 <body>
+
   <div class="bg">
+
     <div class="img">
-      <center><img src="/img/1.png" style="margin-top: 300px;"></center>
-<form action="/product/list" method="get" id="search">
-    <div class="input-group">
-        <input type="hidden" name="page" value = "1">
-        <div class="input-group-prepend">
-    <div class="search-mode">
+
+        <div class="dropdown">
+            <i class="fa fa-bars dropbtn" onclick="myFunction()"></i>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div id="m">
+              <img class="logo" src="/img/1.png">
+        <form action="/product/list" method="get" id="search">
+
+                <input type="hidden" name="page" value = "1">
+
     <select class="custom-select" name="type" style="display: none;">
         <option value="t" th:selected = "${pageRequestDTO.type == 't'}">제목</option>
     </select>
-    <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
-
-    <div class="icon">
-        <div class="search">
-            <i class="fa fa-search"></i>
-        </div>
+                <div class="search-mode">
+                    <i class="fa fa-search"></i><input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
 
 
-    </div>
+                </div>
 
-</div>
-</div>
-    </div>
+</form>
   </div>
+  </div>
+  <script th:inline="javascript">
 
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+              myDropdown.classList.remove('show');
+            }
+          }
+        }
+</script>
 </body>
 </html>
 
