@@ -1,23 +1,107 @@
-html {
-    position: relative;
-    min-height: 100%;
-    margin: 0;
-}
-body {
-    min-height: 100%;
-}
-.footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-}
-.content{
-    margin-bottom:100px;
-    margin-top: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
-}
+* { margin: 0; padding: 0; }
+        #wrap {
+            height: auto;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 250px;
+        }
+        a {
+            color: #000;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        #pn {
+            color: #000;
+        }
+        #pn:hover {
+            color: #0685d7;
+        }
+
+        #nav {
+          background-color: #f2f2f2;
+          height: 100px;
+          position: sticky;
+          width: 100%;
+          display: block;
+          top: 0;
+          z-index: 10;
+        }
+
+        #nav ul li {
+            list-style-type: none;
+            float: left;
+        }
+
+        #nav ul {
+            display: flex;
+            justify-content: space-between;
+            width: 100% !important;
+            height: 100px;
+            margin: auto;
+        }
+
+        .mn {
+            padding-left: 150px;
+        }
+
+        .icon {
+          font-size: 30px;
+          top: 25px;
+          padding: 0 30px;
+          text-decoration: none;
+          position: relative;
+        }
+
+        .fa-search {
+          top: 35px;
+          padding-left: 10px;
+          font-size: 30px;
+          position: absolute;
+        }
+
+        img {
+          width: 250px;
+          margin-right: 50px;
+          margin-top: 15px;
+        }
+        #s {
+          height: 50px;
+          margin-top: 25px;
+          width: 500px;
+          border-radius: 50px;
+          margin-right: 250px;
+          padding-left: 40px;
+        }
+        .content {
+            padding: 0 0 100px 0;
+        }
+        footer {
+          background-color: #36373a;
+          padding: 50px;
+          width: 100%;
+          height: 250px;
+          position: absolute;
+          bottom: 0;
+          color: #ffffff;
+        }
+        #box {
+            display: flex;
+            justify-content: space-between;
+        }
+        #info {
+          text-align: left;
+          float: left;
+        }
+        #time {
+          text-align: left;
+          float: left;
+        }
+
+        #cs {
+          text-align: left;
+          float: left;
+        }
+
