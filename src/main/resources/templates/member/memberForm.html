@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<th:block th:replace="~{/layout/basic1 :: setContent(~{this::text} )}">
+<link href="/css/join.css" rel="stylesheet">
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<th:block th:replace="~{/layout/basic1 :: setContent(~{this::text} )}">-
 
     <th:block th:fragment="text">
         <div class="container">
@@ -37,3 +38,4 @@
     </th:block>
 
 </th:block>
+</html>
