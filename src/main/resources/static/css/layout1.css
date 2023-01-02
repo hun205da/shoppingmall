@@ -76,7 +76,7 @@
           padding-left: 40px;
         }
         .content {
-            padding: 0 0 100px 0;
+            padding: 100px 0 100px 0;
         }
         footer {
           background-color: #36373a;
@@ -104,4 +104,3 @@
           text-align: left;
           float: left;
         }
-
