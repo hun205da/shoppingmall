@@ -8,7 +8,7 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
+#lw {
 
     display: flex;
     height: 100vh;
@@ -24,7 +24,7 @@ body{
     padding: 40px;
     margin: auto;
     box-sizing: border-box;
- 
+
 }
 
 .login-wrapper > h2{
