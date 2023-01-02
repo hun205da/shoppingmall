@@ -2,12 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <link href="/css/login.css" rel="stylesheet">
-<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!--<th:block th:replace="~{/layout/basic1 :: setContent(~{this::text} )}">-->
+<th:block th:replace="~{/layout/layout1 :: setContent(~{this::text} )}">
 
 <th:block th:fragment="text">
-  <div class="container">
+  <div id="lw" class="container">
     <div class="login-wrapper">
       <h2>로그인</h2>
       <form role="form" method="post" action="/members/login" id="login-form">
@@ -23,7 +22,7 @@
         <label for="remember-check">
           <input type="checkbox" id="remember-check">아이디 저장하기
         </label>
-        <button class="btn btn-primary" >로그인</button>
+        <button class="btn btn-primary">로그인</button>
         <button type="button" class="btn btn-primary" onClick="location.href='/members/new'">회원가입</button>
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
       </form>
