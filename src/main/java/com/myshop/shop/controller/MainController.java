@@ -19,12 +19,12 @@ public class MainController {
 
     private final ItemService itemService;
 
-    @GetMapping(value = "/basic")
-    public void basic(){
-
+    @GetMapping(value = "/")
+    public String basic(){
+        return "basic";
     }
     //메인 페이지 상품 데이터 출력
-    @GetMapping(value = "/")
+    @GetMapping(value = "basic")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
