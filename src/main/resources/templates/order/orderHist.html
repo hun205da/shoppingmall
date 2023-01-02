@@ -8,7 +8,7 @@
 <th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
 
   <th:block th:fragment="content">
-    <div class="container">
+    <div id="order" class="container">
       <h2 class="mb-4">
         구매 이력
       </h2>
@@ -67,7 +67,7 @@
 
     </div>
     <style>
-        .container{
+        #order{
             margin-left:30%;
             margin-right:30%;
             margin-top:2%;
