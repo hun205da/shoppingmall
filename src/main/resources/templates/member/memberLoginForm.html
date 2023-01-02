@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="~{/layout/layout1 :: setContent(~{this::text} )}">
+<link href="/css/login.css" rel="stylesheet">
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <th:block th:fragment="text">
-    <div class="container">
-      <h1 class="mt-4">로그인 화면</h1>
-      <form role="form" method="post" action="/members/login">
-        <div class="form-group">
-          <label th:for="email">이메일주소</label>
-          <input type="email" name="email" class="form-control" placeholder="이메일을 입력해주세요">
-        </div>
-        <div class="form-group">
-          <label th:for="password">비밀번호</label>
-          <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호 입력">
-        </div>
+<!--<th:block th:replace="~{/layout/basic1 :: setContent(~{this::text} )}">-->
+
+<th:block th:fragment="text">
+  <div class="container">
+    <div class="login-wrapper">
+      <h2>로그인</h2>
+      <form role="form" method="post" action="/members/login" id="login-form">
+        <!--        <div class="form-group">-->
+        <!--          <label th:for="email">이메일주소</label>-->
+        <input type="email" name="email" class="duri" placeholder="이메일을 입력해주세요">
+        <!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--          <label th:for="password">비밀번호</label>-->
+        <input type="password" name="password" id="password" class="duri" placeholder="비밀번호 입력">
+        <!--        </div>-->
         <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
-        <button class="btn btn-primary">로그인</button>
+        <label for="remember-check">
+          <input type="checkbox" id="remember-check">아이디 저장하기
+        </label>
+        <button class="btn btn-primary" >로그인</button>
         <button type="button" class="btn btn-primary" onClick="location.href='/members/new'">회원가입</button>
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
       </form>
     </div>
-
+  </div>
   </th:block>
-
-</th:block>
 </html>
