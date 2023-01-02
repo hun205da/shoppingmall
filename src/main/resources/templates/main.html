@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -110,8 +111,11 @@
         <div class="dropdown">
             <i class="fa fa-bars dropbtn" onclick="myFunction()"></i>
             <div id="myDropdown" class="dropdown-content">
-                <a th:href="@{members/login}">로그인</a>
-                <a th:href="@{members/new}">회원가입</a>
+                <a th:href="@{members/login}" sec:authorize="isAnonymous()">로그인</a>
+                <a th:href="@{members/new}" sec:authorize="isAnonymous()">회원가입</a>
+                <a th:href="@{members/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
+                <a th:href="@{cart}" sec:authorize="isAuthenticated()">장바구니</a>
+                <a th:href="@{orders}" sec:authorize="isAuthenticated()">구매이력</a>
                 <a th:href="@{cs/main}">고객센터</a>
             </div>
         </div>
