@@ -84,6 +84,7 @@
           overflow: auto;
           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
           z-index: 1;
+          right: 30px;
         }
 
         .dropdown-content a {
@@ -109,9 +110,9 @@
         <div class="dropdown">
             <i class="fa fa-bars dropbtn" onclick="myFunction()"></i>
             <div id="myDropdown" class="dropdown-content">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a th:href="@{members/login}">로그인</a>
+                <a th:href="@{members/new}">회원가입</a>
+                <a th:href="@{cs/main}">고객센터</a>
             </div>
         </div>
         <div id="m">
