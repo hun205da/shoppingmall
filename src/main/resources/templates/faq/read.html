@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:replace="~{/layout/layout1 :: setContent(~{this::text} )}">
 
@@ -39,7 +40,7 @@
         <!--        <a th:href="@{/faq/list(page=${requestDTO.page})}"><button type="button" class="btn btn-info">List</button></a>-->
 
         <a th:href="@{/faq/modify(no = ${dto.no}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
-            <button type="button" class="btn btn-primary">수정</button>
+            <button type="button" class="btn btn-primary" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">수정</button>
         </a>
 
         <a th:href="@{/faq/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
