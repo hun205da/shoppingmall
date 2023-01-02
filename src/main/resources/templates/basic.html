@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        .search-mode {
+              position: relative;
+              width: 50%;
+              margin: auto;
+        }
+        input {
+          height: 50px;
+          margin-top: 25px;
+          width: 500px;
+          border-radius: 50px;
+          padding-left: 50px;
+        }
+
+        input::-ms-clear,
+        input::-ms-reveal {display: none; width : 0; height: 0;}
+
+        input::-webkit-search-decoration,
+        input::-webkit-search-cancel-button,
+        input::-webkit-search-results-button,
+        input::-webkit-search-results-decoration { display: none; }
+
+        #m {
+            padding-top: 300px;
+        }
+
+        .fa-search {
+          top: 35px;
+          padding-left: 10px;
+          font-size: 30px;
+          position: absolute;
+        }
+
+        .bg {
+          width: 100vw;
+          height: 100vh;
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+          padding: auto;
+          align-items: center;
+          text-align: center;
+
+          background-image: url("/img/3.jpg");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 100% 100%;
+        }
+
+
+        .dropbtn {
+          padding: 16px;
+          font-size: 30px;
+          color: black;
+          border: none;
+          cursor: pointer;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          float: right;
+          padding: 30px;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown a:hover {background-color: #ddd;}
+
+        .show {display: block;}
+
+    </style>
+</head>
+
+<body>
+
+  <div class="bg">
+
+    <div class="img">
+
+        <div class="dropdown">
+            <i class="fa fa-bars dropbtn" onclick="myFunction()"></i>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div id="m">
+              <img class="logo" src="/img/1.png">
+            <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+
+                <div class="search-mode">
+                    <i class="fa fa-search"></i><input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </div>
+
+</form>
+  </div>
+  </div>
+  <script th:inline="javascript">
+
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+              myDropdown.classList.remove('show');
+            }
+          }
+        }
+</script>
+</body>
+</html>
+

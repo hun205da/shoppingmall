@@ -19,6 +19,10 @@ public class MainController {
 
     private final ItemService itemService;
 
+    @GetMapping(value = "/basic")
+    public void basic(){
+
+    }
     //메인 페이지 상품 데이터 출력
     @GetMapping(value = "/")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
