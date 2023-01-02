@@ -24,6 +24,9 @@
         <ul class="mn">
             <li><a th:href="@{/}"><img src="/img/1.png"></a></li>
             <li><i class="fa fa-search"></i><input id="s" class="form-control search" name="searchQuery"></li>
+            <li class="icon" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+              <a href="/admin/item/new"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            </li>
             <li class="icon"><a th:href="@{/layout/mypage}" style="color: #000;"><i class="fa fa-user"></i></a></li>
             <li class="icon"><a th:href="@{/cart}" style="color: #000;"><i class="fa fa-shopping-basket"></i></a></li>
             <li class="icon"><a th:href="@{/members/login}" style="vertical-align: middle; font-size: 15px;"><strong>로그인/회원가입</strong></a></li>
