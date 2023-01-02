@@ -75,6 +75,7 @@ public class CartService {
         return cartDetailDtoList;
     }
 
+
     @Transactional(readOnly = true)
     public boolean validateCartItem(Long cartItemId, String email){
         Member curMember = memberRepository.findByEmail(email);
@@ -102,6 +103,8 @@ public class CartService {
         cartItemRepository.delete(cartItem);
     }
 
+
+
     public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email){
         List<OrderDto> orderDtoList = new ArrayList<>();
 
@@ -109,13 +112,11 @@ public class CartService {
             CartItem cartItem = cartItemRepository
                             .findById(cartOrderDto.getCartItemId())
                             .orElseThrow(EntityNotFoundException::new);
-
             OrderDto orderDto = new OrderDto();
             orderDto.setItemId(cartItem.getItem().getId());
             orderDto.setCount(cartItem.getCount());
             orderDtoList.add(orderDto);
         }
-
         Long orderId = orderService.orders(orderDtoList, email);
         for (CartOrderDto cartOrderDto : cartOrderDtoList) {
             CartItem cartItem = cartItemRepository
@@ -123,7 +124,6 @@ public class CartService {
                             .orElseThrow(EntityNotFoundException::new);
             cartItemRepository.delete(cartItem);
         }
-
         return orderId;
     }
 
