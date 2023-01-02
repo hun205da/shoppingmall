@@ -34,7 +34,7 @@
             <div class="align-self-center w-75">
               <span th:text="${orderItem.itemNm}" class="fs24 font-weight-bold"></span>
               <div class="fs18 font-weight-light">
-                <span th:text="${orderItem.orderPrice} +'원'"></span>
+                <span th:text="${#numbers.formatInteger(orderItem.orderPrice, 3, 'COMMA')}">${orderItem.orderPrice}</span>원
                 <span th:text="${orderItem.count} +'개'"></span>
               </div>
             </div>

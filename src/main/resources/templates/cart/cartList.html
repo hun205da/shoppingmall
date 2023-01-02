@@ -46,8 +46,8 @@
                             <span class="input-group mt-2">
                                 <span th:id="'price_' + ${cartItem.cartItemId}"
                                       th:data-price="${cartItem.price}"
-                                      th:text="${cartItem.price} + '원'" class="align-self-center mr-2">
-                                </span>
+                                      th:text="${#numbers.formatInteger(cartItem.price, 3, 'COMMA')}" class="align-self-center">[[${cartItem.price}]]
+                                </span><span class="align-self-center">원</span>
                                 <input type="number" name="count" th:id="'count_' + ${cartItem.cartItemId}"
                                        th:value="${cartItem.count}" min="1"
                                        onchange="changeCount(this)" class="form-control mr-2" >
@@ -60,16 +60,17 @@
           </td>
           <td class="text-center align-middle">
                     <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
-                          name="totalPrice" th:text="${cartItem.price * cartItem.count} + '원'">
-                    </span>
+                          name="totalPrice" th:text="${#numbers.formatInteger(cartItem.price * cartItem.count, 3, 'COMMA')}">
+                      [[${cartItem.price * cartItem.count}]]
+                    </span>원
           </td>
         </tr>
         </tbody>
       </table>
 
-      <h2 class="text-center">
-        총 주문 금액 : <span id="orderTotalPrice" class="text-danger">0원</span>
-      </h2>
+      <h3 class="text-center">
+        총 주문 금액 : <span id="orderTotalPrice" name="orderTotalPrice"></span>원
+      </h3>
 
       <div class="text-center mt-3">
         <button type="button" class="btn btn-primary btn-lg" onclick="orders()">주문하기</button>
@@ -110,14 +111,18 @@
 
         function getOrderTotalPrice(){
             var orderTotalPrice = 0;
+            var cartItemId = [];
+            var price = [];
+            var count = [];
             $("input[name=cartChkBox]:checked").each(function() {
                 var cartItemId = $(this).val();
                 var price = $("#price_" + cartItemId).attr("data-price");
                 var count = $("#count_" + cartItemId).val();
-                orderTotalPrice += price*count;
+                orderTotalPrice += price * count;
             });
 
-            $("#orderTotalPrice").html(orderTotalPrice+'원');
+            $("#orderTotalPrice").html(orderTotalPrice);
+
         }
 
         function changeCount(obj){
@@ -125,7 +130,8 @@
             var cartItemId = obj.id.split('_')[1];
             var price = $("#price_" + cartItemId).data("price");
             var totalPrice = count*price;
-            $("#totalPrice_" + cartItemId).html(totalPrice+"원");
+            $("#totalPrice_" + cartItemId).html(totalPrice);
+            $("#totalPrice_" + cartItemId).text( $("#totalPrice_" + cartItemId).text().replace( /\,/g, '' ).replace( /(\d)(?=(?:\d{3})+(?!\d))/g, '$1,' ));
             getOrderTotalPrice();
             updateCartItemCount(cartItemId, count);
         }
@@ -138,6 +144,8 @@
             }
             getOrderTotalPrice();
         }
+
+
 
         function updateCartItemCount(cartItemId, count){
             var token = $("meta[name='_csrf']").attr("content");

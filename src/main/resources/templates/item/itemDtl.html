@@ -29,7 +29,7 @@
         <div class="text-right">
           <div class="h4 text-danger text-left">
             <input type="hidden" th:value="${item.price}" id="price" name="price">
-            <span th:text="${item.price}"></span>원
+            <span th:value="${item.price}" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')}"></span>원
           </div>
           <div class="input-group w-50">
             <div class="input-group-prepend">
@@ -105,6 +105,7 @@
             var price = $("#price").val();
             var totalPrice = price*count;
             $("#totalPrice").html(totalPrice + '원');
+            $( '#totalPrice' ).text( $( '#totalPrice' ).text().replace( /\,/g, '' ).replace( /(\d)(?=(?:\d{3})+(?!\d))/g, '$1,' ))
         }
 
        function order(){

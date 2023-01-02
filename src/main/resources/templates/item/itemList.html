@@ -21,18 +21,19 @@
 
       <div class="row">
         <th:block th:each="item, status: ${items.getContent()}">
-          <div class="col-md-4 margin">
-            <div class="card">
-              <a th:href="'/item/' +${item.id}" class="text-dark">
-                <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
-                <div class="card-body">
-                  <h4 class="card-title">[[${item.itemNm}]]</h4>
-                  <p class="card-text">[[${item.itemDetail}]]</p>
-                  <h3 class="card-title text-danger">[[${item.price}]]원</h3>
-                </div>
-              </a>
-            </div>
-          </div>
+          <table class="col-md-12 margin">
+            <tbody class="card">
+              <td>
+                <a th:href="'/item/' +${item.id}" class="text-dark">
+                  <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="200">
+                </a>
+              </td>
+                <td class="card-body">
+                  <a th:href="'/item/' +${item.id}" class="text-dark"><p class="card-title">[[${item.itemNm}]]</p></a>
+                  <h3><strong class="card-title" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')}">[[${item.price}]]</strong>원</h3>
+                </td>
+            </tbody>
+          </table>
         </th:block>
       </div>
 
