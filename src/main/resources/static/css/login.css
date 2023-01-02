@@ -60,7 +60,7 @@ body{
     color: #fff;
     font-size: 16px;
     background-color: #6A24FE;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 #login-form > input[type="checkbox"]{
     display: none;
