@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+<th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
 
   <th:block th:fragment="content">
-
+    <div class="container">
     <h1 class="mt-4">답변 페이지</h1>
 
     <form action="/cs/reply" method="post">
@@ -50,7 +50,7 @@
     <button type="button" class="btn btn-primary modifyBtn">수정</button>
 
     <button type="button" class="btn btn-info listBtn">목록</button>
-
+    </div>
     <script th:inline="javascript">
 
             var actionForm = $("form"); //form 태그 객체
