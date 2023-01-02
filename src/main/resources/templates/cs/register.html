@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+<th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
 
     <th:block th:fragment="content">
-
+        <div class="container">
         <h1 class="mt-4">상담 등록 페이지</h1>
 
         <form th:action="@{/cs/register}" th:method="post">
@@ -27,7 +27,7 @@
 
             <button type="submit" class="btn btn-primary">등록</button>
         </form>
-
+        </div>
     </th:block>
 
 </th:block>
