@@ -37,7 +37,7 @@
         </th:block>
       </div>
 
-      <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+      <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" style="padding-top: 30px;">
         <ul class="pagination justify-content-center">
 
           <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
