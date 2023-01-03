@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic1 :: setContent(~{this::text} )}">
+
+  <th:block th:fragment="text">
+    <div class="container">
+      <form role="form" method="post" enctype="multipart/form-data" th:object="${couponFormDto}">
+
+        <p class="h2">
+          쿠폰 등록
+        </p>
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+          <select th:field="*{couponStatus}" class="custom-select">
+            <option value="ON">사용가능</option>
+            <option value="OFF">만료</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">쿠폰명</span>
+          </div>
+          <input type="text" th:field="*{couponNm}" class="form-control" placeholder="쿠폰명을 입력해주세요">
+        </div>
+        <p th:if="${#fields.hasErrors('couponNm')}" th:errors="*{couponNm}" class="fieldError">Incorrect data</p>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">할인가</span>
+          </div>
+          <input id="pr" type="number" th:field="*{discount}" class="form-control" placeholder="할인가를 입력해주세요">
+        </div>
+        <p th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}" class="fieldError">Incorrect data</p>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">수량</span>
+          </div>
+          <input type="number" th:field="*{stockNumber}" class="form-control" placeholder="쿠폰의 수량을 입력해주세요">
+        </div>
+        <p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}" class="fieldError">Incorrect data</p>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">쿠폰 소유자</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" th:field="*{email}"></textarea>
+        </div>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+
+        <div th:if="${#strings.isEmpty(couponFormDto.id)}" style="text-align: center">
+          <button th:formaction="@{/admin/coupon/new}" type="submit" class="btn btn-dark">저장</button>
+        </div>
+        <div th:unless="${#strings.isEmpty(couponFormDto.id)}" style="text-align: center">
+          <button th:formaction="@{'/admin/coupon/' + ${couponFormDto.id} }" type="submit" class="btn btn-dark">수정</button>
+        </div>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+      </form>
+    </div>
+    <style>
+      #pr::-webkit-inner-spin-button {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+      }
+
+      .input-group {
+        padding-bottom: 20px;
+      }
+    </style>
+    <script th:inline="javascript">
+
+    </script>
+
+  </th:block>
+
+</th:block>
