@@ -1,9 +1,13 @@
 package com.myshop.shop.service;
 
 import com.myshop.shop.dto.CouponFormDto;
+import com.myshop.shop.dto.CouponSearchDto;
+import com.myshop.shop.dto.MainCouponDto;
 import com.myshop.shop.entity.Coupon;
 import com.myshop.shop.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
