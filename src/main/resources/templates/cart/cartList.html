@@ -111,9 +111,6 @@
 
         function getOrderTotalPrice(){
             var orderTotalPrice = 0;
-            var cartItemId = [];
-            var price = [];
-            var count = [];
             $("input[name=cartChkBox]:checked").each(function() {
                 var cartItemId = $(this).val();
                 var price = $("#price_" + cartItemId).attr("data-price");
@@ -122,7 +119,7 @@
             });
 
             $("#orderTotalPrice").html(orderTotalPrice);
-
+            $("#orderTotalPrice").text( $("#orderTotalPrice").text().replace( /\,/g, '' ).replace( /(\d)(?=(?:\d{3})+(?!\d))/g, '$1,' ));
         }
 
         function changeCount(obj){
