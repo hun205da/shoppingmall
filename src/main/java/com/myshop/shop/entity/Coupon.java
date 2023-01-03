@@ -25,9 +25,9 @@ public class Coupon extends BaseEntity {
     @Column(name = "discount_rate", nullable = false)
     private int discount; //남은 수량
 
-    @Lob
+    @OneToMany
     @Column(nullable = false)
-    private String couponDetail; //쿠폰 상세 설명
+    private Member email;
 
     @Enumerated(EnumType.STRING)
     private CouponStatus couponStatus; //쿠폰상태

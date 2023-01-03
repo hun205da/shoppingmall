@@ -26,7 +26,7 @@ public class CouponFormDto {
     private Integer stockNumber;
 
     @NotBlank(message = "쿠폰보유자는 필수값입니다.")
-    private Member email;
+    private Member member_id;
 
     private CouponStatus couponStatus;
 
