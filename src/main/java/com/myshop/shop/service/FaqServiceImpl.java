@@ -95,8 +95,6 @@ public class FaqServiceImpl implements FaqService {
 
             entity.changeTitle(dto.getTitle());
             entity.changeText(dto.getText());
-            entity.changeCategory(dto.getCategory());
-
             repository.save(entity);
 
         }

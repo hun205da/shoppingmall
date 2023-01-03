@@ -21,7 +21,6 @@ public interface FaqService {
         Faq entity = Faq.builder()
                 .no(dto.getNo())
                 .title(dto.getTitle())
-                .category(dto.getCategory())
                 .text(dto.getText())
                 .build();
         return entity;
@@ -32,7 +31,6 @@ public interface FaqService {
         FaqDTO dto  = FaqDTO.builder()
                 .no(entity.getNo())
                 .title(entity.getTitle())
-                .category(entity.getCategory())
                 .text(entity.getText())
                 .regDate(entity.getRegTime())
                 .modDate(entity.getUpdateTime())
