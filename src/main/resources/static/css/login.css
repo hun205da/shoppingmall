@@ -28,7 +28,7 @@ body{
 
 .login-wrapper > h2{
     font-size: 34px;
-    color: #6A24FE;
+    color: #E1A963;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -49,7 +49,7 @@ body{
 #login-form > .input_btn_class{
     color: #fff;
     font-size: 16px;
-    background-color: black;
+    background-color: #CD853F;
     margin-top: 10px;
 }
 #login-form > input[type="checkbox"]{
