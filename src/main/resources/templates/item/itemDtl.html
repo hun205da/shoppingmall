@@ -27,7 +27,7 @@
         <hr class="my-4">
 
         <div class="text-right">
-          <div class="h4 text-danger text-left">
+          <div class="h4 text-left">
             <input type="hidden" th:value="${item.price}" id="price" name="price">
             <span th:value="${item.price}" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')}"></span>원
           </div>
@@ -45,8 +45,8 @@
           <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
         </div>
         <div th:if="${item.itemSellStatus == T(com.myshop.shop.constant.ItemSellStatus).SELL}" class="text-right">
-          <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">장바구니 담기</button>
-          <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button>
+          <button type="button" class="btn btn-light border border-black btn-lg" onclick="addCart()">장바구니 담기</button>
+          <button type="button" class="btn btn-light border border-black btn-lg" onclick="order()">주문하기</button>
         </div>
         <div th:unless="${item.itemSellStatus == T(com.myshop.shop.constant.ItemSellStatus).SELL}" class="text-right">
           <button type="button" class="btn btn-danger btn-lg">품절</button>
@@ -61,7 +61,7 @@
     </div>
 
     <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-      <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
+      <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15">
     </div>
     </div>
     <style>
@@ -80,7 +80,7 @@
             width:50%;
         }
         .repImg{
-            width:100%;
+            width:70%;
             height:400px;
         }
         .wd50{
@@ -171,7 +171,7 @@
                 cache   : false,
                 success  : function(result, status){
                     alert("상품을 장바구니에 담았습니다.");
-                    location.href='/list';
+                    self.location.reload();
                 },
                 error : function(jqXHR, status, error){
 
