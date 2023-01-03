@@ -32,7 +32,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">가격</span>
           </div>
-          <input type="number" th:field="*{price}" class="form-control" placeholder="상품의 가격을 입력해주세요">
+          <input id="pr" type="number" th:field="*{price}" class="form-control" placeholder="상품의 가격을 입력해주세요">
         </div>
         <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError">Incorrect data</p>
 
@@ -81,6 +81,17 @@
 
       </form>
     </div>
+    <style>
+      #pr::-webkit-inner-spin-button {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+      }
+
+      .input-group {
+        padding-bottom: 20px;
+      }
+    </style>
     <script th:inline="javascript">
         $(document).ready(function(){
             var errorMessage = [[${errorMessage}]];
