@@ -42,12 +42,12 @@
             </div>
             <div class="align-self-center">
               <span th:text="${cartItem.itemNm}" class="fs18"></span>
-              <div class="fs24 font-weight-bold">
+              <div>
                             <span class="input-group mt-2">
-                                <span th:id="'price_' + ${cartItem.cartItemId}"
+                                <h4><span th:id="'price_' + ${cartItem.cartItemId}"
                                       th:data-price="${cartItem.price}"
-                                      th:text="${#numbers.formatInteger(cartItem.price, 3, 'COMMA')}" class="align-self-center">[[${cartItem.price}]]
-                                </span><span class="align-self-center">원</span>
+                                      th:text="${#numbers.formatInteger(cartItem.price, 3, 'COMMA')}" class="align-self-center fs24 font-weight-bold">[[${cartItem.price}]]
+                                </span>원</h4>
                                 <input type="number" name="count" th:id="'count_' + ${cartItem.cartItemId}"
                                        th:value="${cartItem.count}" min="1"
                                        onchange="changeCount(this)" class="form-control mr-2" >
@@ -59,10 +59,10 @@
             </div>
           </td>
           <td class="text-center align-middle">
-                    <span class="fs24 font-weight-bold" th:id="'totalPrice_' + ${cartItem.cartItemId}"
+                    <h4><span class="fs24 font-weight-bold" th:id="'totalPrice_' + ${cartItem.cartItemId}"
                           name="totalPrice" th:text="${#numbers.formatInteger(cartItem.price * cartItem.count, 3, 'COMMA')}">
                       [[${cartItem.price * cartItem.count}]]
-                    </span>원
+                    </span>원</h4>
           </td>
         </tr>
         </tbody>
@@ -117,7 +117,6 @@
                 var count = $("#count_" + cartItemId).val();
                 orderTotalPrice += price * count;
             });
-
             $("#orderTotalPrice").html(orderTotalPrice);
             $("#orderTotalPrice").text( $("#orderTotalPrice").text().replace( /\,/g, '' ).replace( /(\d)(?=(?:\d{3})+(?!\d))/g, '$1,' ));
         }

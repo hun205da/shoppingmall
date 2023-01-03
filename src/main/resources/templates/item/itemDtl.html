@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta name="_csrf" th:content="${_csrf.token}"/>
   <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
@@ -29,7 +29,7 @@
         <div class="text-right">
           <div class="h4 text-left">
             <input type="hidden" th:value="${item.price}" id="price" name="price">
-            <span th:value="${item.price}" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')}"></span>원
+            <span class="fs24 font-weight-bold" th:value="${item.price}" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')}"></span>원
           </div>
           <div class="input-group w-50">
             <div class="input-group-prepend">
@@ -42,29 +42,51 @@
 
         <div class="text-right mgt-50">
           <h5>결제 금액</h5>
-          <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
+          <h4><span class="fs24 font-weight-bold" style="font-size: 24px;" name="totalPrice" id="totalPrice"></span>원</h4>
         </div>
         <div th:if="${item.itemSellStatus == T(com.myshop.shop.constant.ItemSellStatus).SELL}" class="text-right">
-          <button type="button" class="btn btn-light border border-black btn-lg" onclick="addCart()">장바구니 담기</button>
-          <button type="button" class="btn btn-light border border-black btn-lg" onclick="order()">주문하기</button>
+          <button type="button" class="btn btn-light border border-black btn-lg" style="border-radius: 20px;" onclick="addCart()">장바구니 담기</button>
+          <button type="button" class="btn btn-light border border-black btn-lg" style="border-radius: 20px;" onclick="order()">주문하기</button>
         </div>
         <div th:unless="${item.itemSellStatus == T(com.myshop.shop.constant.ItemSellStatus).SELL}" class="text-right">
           <button type="button" class="btn btn-danger btn-lg">품절</button>
         </div>
       </div>
     </div>
-
-    <div class="jumbotron jumbotron-fluid mgt-30">
-      <div class="container">
-        <h4 class="display-5" style="text-align: center;">상품 상세 설명</h4>
+    <div>
+      <div class="tab">
+        <ul>
+          <li class="tablinks active" onclick="openCity(event, 'dtl')"><a class="tag" href="#tabcontent">상세설명</a></li>
+          <li class="tablinks" onclick="openCity(event, 'Paris')"><a class="tag" href="#tabcontent">상품평</a></li>
+          <li class="tablinks" onclick="openCity(event, 'Tokyo')"><a class="tag" href="#tabcontent">상품문의</a></li>
+        </ul>
       </div>
-    </div>
 
-    <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
-      <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15">
+      <div id="dtl" class="tabcontent active">
+      <div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
+        <img th:if="${not #strings.isEmpty(itemImg.imgUrl)}" th:src="${itemImg.imgUrl}" class="rounded mgb-15">
+      </div>
+      </div>
+
+      <div id="Paris" class="tabcontent">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p>
+      </div>
+
+      <div id="Tokyo" class="tabcontent">
+        <h3>Tokyo</h3>
+        <p>Tokyo is the capital of Japan.</p>
+      </div>
+
     </div>
     </div>
     <style>
+        .tag {
+          text-decoration: none;
+        }
+        .tag:hover {
+          text-decoration: none;
+        }
         .mgb-15{
             margin-bottom:15px;
         }
@@ -87,6 +109,52 @@
             height:auto;
             width:50%;
         }
+        .tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+        }
+        .tab ul {
+          list-style-type: none;
+        }
+        .tab li {
+          float: left;
+          margin-left: 50px;
+        }
+        /* Style the buttons inside the tab */
+        .tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+          background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab li.active {
+          background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border: 1px solid #ccc;
+          border-top: none;
+        }
+
+        .tabcontent.active {
+           display: block;
+        }
+
     </style>
     <script th:inline="javascript">
         $(document).ready(function(){
@@ -102,7 +170,7 @@
             var count = $("#count").val();
             var price = $("#price").val();
             var totalPrice = price*count;
-            $("#totalPrice").html(totalPrice + '원');
+            $("#totalPrice").html(totalPrice);
             $( '#totalPrice' ).text( $( '#totalPrice' ).text().replace( /\,/g, '' ).replace( /(\d)(?=(?:\d{3})+(?!\d))/g, '$1,' ))
         }
 
@@ -130,7 +198,7 @@
                 dataType : "json",
                 cache   : false,
                 success  : function(result, status){
-                    alert("장바구니에 담았습니다. 주문 화면으로 이동합니다.");
+                    alert("주문 화면으로 이동합니다.");
                     location.href='/cart';
                 },
                 error : function(jqXHR, status, error){
@@ -185,7 +253,19 @@
                 }
             });
         }
-
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
     </script>
 
 
