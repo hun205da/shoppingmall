@@ -1,5 +1,6 @@
 package com.myshop.shop.service;
 
+import com.myshop.shop.dto.PageRequestDTO;
 import com.myshop.shop.entity.Member;
 import com.myshop.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,7 @@ public class MemberService implements UserDetailsService {
                 .roles(member.getRole().toString())
                 .build();
     }
+
+
 
 }

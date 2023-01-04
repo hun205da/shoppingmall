@@ -71,7 +71,6 @@ public class OrderController {
 
         return "order/orderHist";
     }
-
     @PostMapping("/order/{orderId}/cancel")
     public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderId") Long orderId , Principal principal){
 

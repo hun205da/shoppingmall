@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+        <div class="container" style="margin-left:20%;margin-right:20%">
+
+            <h2 class="mb-4">
+                유저목록
+            </h2>
+
+            <div>
+
+                <table class="table">
+                    <colgroup>
+                        <col width="10%"/>
+                        <col width="20%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                        <col width="30%"/>
+                        <col width="20%"/>
+                    </colgroup>
+                    <thead>
+                    <tr class="text-center">
+                        <td>
+                            <input type="checkbox" id="checkall" onclick="checkAll()"> 전체선택
+                        </td>
+                        <td>이메일</td>
+                        <td>이름</td>
+                        <td>권한</td>
+                        <td>게시글</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="memberdto : ${memberdto.dtoList}">
+                        <td>[[${memberdto.id}]]</td>
+                        <td>[[${memberdto.name}]]</td>
+                        <td>[[${memberdto.email}]]</td>
+                        <td>[[${memberdto.role}]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="text-center">
+                    총 주문 금액 : <span id="orderTotalPrice" name="orderTotalPrice"></span>원
+                </h3>
+
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-dark border border-white btn-lg" onclick="orders()">주문하기</button>
+                </div>
+
+            </div>
+        </div>
+        <style>
+        .content-mg{
+            margin-left:25%;
+            margin-right:25%;
+            margin-top:2%;
+            margin-bottom:100px;
+        }
+        .repImgDiv{
+            margin-right:15px;
+            margin-left:15px;
+            height:auto;
+        }
+        .repImg{
+            height:100px;
+            width:100px;
+        }
+        .fs18{
+            font-size:18px
+        }
+        .fs24{
+            font-size:24px
+        }
+    </style>
+    </th:block>
+
+</th:block>
+
+
+
+
+
+
+                <!--USER-->
+
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                    <tr th:each="memberdto : ${memberdto.dtoList}">
+                        <td>[[${memberdto.userId}]]</td>
+                        <td>[[${memberdto.userPw}]]</td>
+                        <td>[[${memberdto.userName}]]</td>
+                        <td>[[${dto.userPhone}]]</td>
+                        <td>[[${dto.userEmail}]]</td>
+                        <td>[[${dto.userNickname}]]</td>
+                        <td>[[${dto.emailCheck}]]</td>
+                        <td>[[${dto.userRole}]]</td>
+                        <td>[[${dto.userGrade}]]</td>
+                        <td>[[${#temporals.format(dto.userInsertdate,'yyyy/MM/dd')}]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+                <!--end-->
+
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>

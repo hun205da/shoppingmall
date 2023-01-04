@@ -18,17 +18,18 @@
 
     <body id="wrap">
     <header id="nav" class="navbar container-fluid">
-        <form action="/basic" method="get" id="search">
+        <form action="/list" method="get" id="search">
             <div class="input-group">
                 <div class="input-group-prepend">
-        <ul class="mn">
-            <li><a th:href="@{/}"><img src="/img/1.png"></a></li>
-            <li class="icon" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/item/new">상품 등록</a></li>
-            <li class="icon" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/items">상품 관리</a></li>
-            <li class="icon"><a href="/cart">장바구니</a></li>
-            <li class="icon"><a href="/orders">구매이력</a></li>
-            <li class="icon"><a href="/members/logout">로그아웃</a></li>
-        </ul>
+                    <ul class="mn">
+                        <li><a th:href="@{/}"><img id="lg" src="/img/1.png"></a></li>
+                        <li><i class="fa fa-search"></i><input id="s" class="form-control search" name="searchQuery"></li>
+                        <li class="icon"><a th:href="@{/admin/item/new}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
+                        <li class="icon"><a th:href="@{/admin/items}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-wrench" aria-hidden="true"></i></a></li>
+                        <li class="icon"><a th:href="@{/orders}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-user"></i></a></li>
+                        <li class="icon"><a th:href="@{/cart}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-address-book-o" aria-hidden="true"></i></a></li><!--유저 관리-->
+                        <li class="icon"><a th:href="@{/members/logout}" sec:authorize="isAuthenticated()" style="vertical-align: middle; font-size: 15px; white-space: nowrap;"><strong>로그아웃</strong></a></li>
+                    </ul>
                 </div>
             </div>
         </form>
@@ -42,7 +43,7 @@
         <div id="box" class="container">
             <div id="info">
                 <p>
-                회사정보<br>
+                    회사정보<br>
                 </p>
                 상호 : 서치트리<br>
                 대표 : 김근우<br>
