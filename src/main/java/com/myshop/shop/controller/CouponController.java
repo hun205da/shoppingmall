@@ -1,8 +1,13 @@
 package com.myshop.shop.controller;
 
 import com.myshop.shop.dto.CouponFormDto;
+import com.myshop.shop.dto.CouponSearchDto;
+import com.myshop.shop.entity.Coupon;
 import com.myshop.shop.service.CouponService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -53,5 +59,15 @@ public class CouponController {
         }
 
         return "coupon/couponForm";
+    }
+
+    @GetMapping(value = {"/admin/coupons", "/admin/coupons/{page}"})
+    public String couponManage(CouponSearchDto couponSearchDto, @PathVariable("page") Optional<Integer> page, Model model){
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+        Page<Coupon> coupons = couponService.getAdminCouponPage(couponSearchDto, pageable);
+        model.addAttribute("coupons", coupons);
+        model.addAttribute("couponSearchDto", couponSearchDto);
+        model.addAttribute("maxPage", 5);
+        return "coupon/couponMng";
     }
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/basic1 :: setContent(~{this::text} )}">
+
+  <th:block th:fragment="text">
+    <div class="container">
+      <form th:action="@{'/admin/coupons/' + ${coupons.number}}" role="form" method="get" th:object="${coupons}">
+        <table class="table">
+          <thead>
+          <tr>
+            <td>쿠폰아이디</td>
+            <td>쿠폰명</td>
+            <td>상태</td>
+            <td>등록자</td>
+            <td>등록일</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="coupon, status: ${coupons.getContent()}">
+            <td th:text="${coupon.id}"></td>
+            <td>
+              <a th:href="'/admin/coupon/'+${coupon.id}" th:text="${coupon.couponNm}"></a>
+            </td>
+            <td th:text="${coupon.couponStatus == T(com.myshop.shop.constant.CouponStatus).ON} ? '사용가능' : '만료'"></td>
+            <td th:text="${coupon.createdBy}"></td>
+            <td th:text="${coupon.regTime}"></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div th:with="start=${(coupons.number/maxPage)*maxPage + 1}, end=(${(coupons.totalPages == 0) ? 1 : (start + (maxPage - 1) < coupons.totalPages ? start + (maxPage - 1) : coupons.totalPages)})" >
+          <ul class="pagination justify-content-center">
+
+            <li class="page-coupon" th:classappend="${coupons.first}?'disabled'">
+              <a th:onclick="'javascript:page(' + ${coupons.number - 1} + ')'" aria-label='Previous' class="page-link">
+                <span aria-hidden='true'>Previous</span>
+              </a>
+            </li>
+
+            <li class="page-coupon" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${coupons.number eq page-1}?'active':''">
+              <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
+            </li>
+
+            <li class="page-coupon" th:classappend="${coupons.last}?'disabled'">
+              <a th:onclick="'javascript:page(' + ${coupons.number + 1} + ')'" aria-label='Next' class="page-link">
+                <span aria-hidden='true'>Next</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="form-inline justify-content-center" th:object="${couponSearchDto}">
+          <select th:field="*{searchDateType}" class="form-control" style="width:auto;">
+            <option value="all">전체기간</option>
+            <option value="1d">1일</option>
+            <option value="1w">1주</option>
+            <option value="1m">1개월</option>
+            <option value="6m">6개월</option>
+          </select>
+          <select th:field="*{searchStatus}" class="form-control" style="width:auto;">
+            <option value="">상태(전체)</option>
+            <option value="SELL">사용가능</option>
+            <option value="SOLD_OUT">만료</option>
+          </select>
+          <select th:field="*{searchBy}" class="form-control" style="width:auto;">
+            <option value="couponNm">쿠폰명</option>
+            <option value="createdBy">등록자</option>
+          </select>
+          <input th:field="*{searchQuery}" type="text" class="form-control" placeholder="검색어를 입력해주세요">
+          <button id="searchBtn" type="submit" class="btn btn-dark">검색</button>
+        </div>
+      </form>
+    </div>
+    <script th:inline="javascript">
+
+        $(document).ready(function(){
+            $("#searchBtn").on("click",function(e) {
+                e.preventDefault();
+                page(0);
+            });
+        });
+
+        function page(page){
+            var searchDateType = $("#searchDateType").val();
+            var searchStatus = $("#searchStatus").val();
+            var searchBy = $("#searchBy").val();
+            var searchQuery = $("#searchQuery").val();
+
+            location.href="/admin/coupons/" + page + "?searchDateType=" + searchDateType
+            + "&searchStatus=" + searchStatus
+            + "&searchBy=" + searchBy
+            + "&searchQuery=" + searchQuery;
+        }
+
+    </script>
+
+  </th:block>
+
+</th:block>

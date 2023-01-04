@@ -22,11 +22,8 @@ public class CouponFormDto {
     @NotNull(message = "할인가는 필수값입니다.")
     private Integer discount;
 
-    @NotBlank(message = "쿠폰 갯수는 필수값입니다.")
+    @NotNull(message = "쿠폰 갯수는 필수값입니다.")
     private Integer stockNumber;
-
-    @NotBlank(message = "쿠폰보유자는 필수값입니다.")
-    private Member member_id;
 
     private CouponStatus couponStatus;
 

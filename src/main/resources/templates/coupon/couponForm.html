@@ -44,13 +44,6 @@
         </div>
         <p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}" class="fieldError">Incorrect data</p>
 
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">쿠폰 소유자</span>
-          </div>
-          <textarea class="form-control" aria-label="With textarea" th:field="*{email}"></textarea>
-        </div>
-        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
 
         <div th:if="${#strings.isEmpty(couponFormDto.id)}" style="text-align: center">
           <button th:formaction="@{/admin/coupon/new}" type="submit" class="btn btn-dark">저장</button>

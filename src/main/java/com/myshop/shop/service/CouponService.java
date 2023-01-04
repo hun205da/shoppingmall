@@ -34,4 +34,11 @@ public class CouponService {
         CouponFormDto couponFormDto = CouponFormDto.of(coupon);
         return couponFormDto;
     }
+
+    @Transactional
+    public Page<Coupon> getAdminCouponPage(CouponSearchDto couponSearchDto, Pageable pageable){
+        return couponRepository.getAdminCouponPage(couponSearchDto, pageable);
+    }
+
+
 }
