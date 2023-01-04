@@ -1,8 +1,6 @@
 package com.myshop.shop.service;
 
-import com.myshop.shop.dto.CouponFormDto;
-import com.myshop.shop.dto.CouponSearchDto;
-import com.myshop.shop.dto.MainCouponDto;
+import com.myshop.shop.dto.*;
 import com.myshop.shop.entity.Coupon;
 import com.myshop.shop.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +36,11 @@ public class CouponService {
     @Transactional
     public Page<Coupon> getAdminCouponPage(CouponSearchDto couponSearchDto, Pageable pageable){
         return couponRepository.getAdminCouponPage(couponSearchDto, pageable);
+    }
+
+    @Transactional
+    public Page<MainCouponDto> getMainCouponPage(CouponSearchDto couponSearchDto, Pageable pageable){
+        return couponRepository.getMainCouponPage(couponSearchDto, pageable);
     }
 
 

@@ -1,7 +1,10 @@
 package com.myshop.shop.controller;
 
+import com.myshop.shop.dto.CouponSearchDto;
 import com.myshop.shop.dto.ItemSearchDto;
+import com.myshop.shop.dto.MainCouponDto;
 import com.myshop.shop.dto.MainItemDto;
+import com.myshop.shop.service.CouponService;
 import com.myshop.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class MainController {
 
     private final ItemService itemService;
+    private final CouponService couponService;
 
     @GetMapping(value = "/")
     public String main(){
@@ -36,5 +40,18 @@ public class MainController {
 
         return "item/itemList";
     }
+    @GetMapping(value = "couponlist")
+    public String coupon(CouponSearchDto couponSearchDto, Optional<Integer> page, Model model){
+
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
+        Page<MainCouponDto> coupons = couponService.getMainCouponPage(couponSearchDto, pageable);
+
+        model.addAttribute("coupons", coupons);
+        model.addAttribute("couponSearchDto", couponSearchDto);
+        model.addAttribute("maxPage", 5);
+
+        return "item/itemList";
+    }
+
 
 }

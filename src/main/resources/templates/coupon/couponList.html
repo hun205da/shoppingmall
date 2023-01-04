@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/layout/layout1 :: setContent(~{this::text} )}">
+
+  <th:block th:fragment="text">
+
+    <div class="container">
+      <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active item">
+
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" name="searchQuery" th:value="${couponSearchDto.searchQuery}">
+      <div th:if="${not #strings.isEmpty(couponSearchDto.searchQuery)}" class="center">
+        <p class="h3 font-weight-bold" th:text="${couponSearchDto.searchQuery} + '검색 결과'"></p>
+      </div>
+
+      <div class="row">
+        <th:block th:each="coupon, status: ${coupons.getContent()}">
+          <table class="col-md-12 margin">
+            <tbody class="card">
+            <td class="card-body">
+              <a th:href="'/coupon/' +${coupon.id}" class="text-dark"><p class="card-title">[[${coupon.couponNm}]]</p></a>
+              <h3><strong class="card-title" th:text="${#numbers.formatInteger(coupon.price, 3, 'COMMA')}">[[${coupon.price}]]</strong>원</h3>
+            </td>
+            </tbody>
+          </table>
+        </th:block>
+      </div>
+
+      <div th:with="start=${(coupons.number/maxPage)*maxPage + 1}, end=(${(coupons.totalPages == 0) ? 1 : (start + (maxPage - 1) < coupons.totalPages ? start + (maxPage - 1) : coupons.totalPages)})" style="padding-top: 30px;">
+        <ul class="pagination justify-content-center">
+
+          <li class="page-coupon" th:classappend="${coupons.number eq 0}?'disabled':''">
+            <a th:href="@{'/' + '?searchQuery=' + ${couponSearchDto.searchQuery} + '&page=' + ${coupons.number-1}}" aria-label='Previous' class="page-link">
+              <span aria-hidden='true'>Previous</span>
+            </a>
+          </li>
+
+          <li class="page-coupon" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${coupons.number eq page-1}?'active':''">
+            <a th:href="@{'/' +'?searchQuery=' + ${couponSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+          </li>
+
+          <li class="page-coupon" th:classappend="${coupons.number+1 ge coupons.totalPages}?'disabled':''">
+            <a th:href="@{'/' +'?searchQuery=' + ${couponSearchDto.searchQuery} + '&page=' + ${coupons.number+1}}" aria-label='Next' class="page-link">
+              <span aria-hidden='true'>Next</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </th:block>
+</th:block>
+</html>

@@ -1,10 +1,11 @@
 package com.myshop.shop.repository;
 
 import com.myshop.shop.constant.CouponStatus;
-import com.myshop.shop.dto.CouponSearchDto;
+import com.myshop.shop.dto.*;
 import com.myshop.shop.entity.Coupon;
 import com.myshop.shop.entity.QCoupon;
 import com.myshop.shop.entity.QItem;
+import com.myshop.shop.entity.QItemImg;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -81,5 +82,32 @@ public class CouponRepositoryCustomImpl implements CouponRepositoryCustom {
 
         return new PageImpl<>(content, pageable, total);
     }
+    private BooleanExpression couponNmLike(String searchQuery){
+        return StringUtils.isEmpty(searchQuery) ? null : QCoupon.coupon.couponNm.like("%" + searchQuery + "%");
+    }
 
+    @Override
+    public Page<MainCouponDto> getMainCouponPage(CouponSearchDto couponSearchDto, Pageable pageable) {
+        QCoupon coupon = QCoupon.coupon;
+
+        List<MainCouponDto> content = queryFactory
+                .select(
+                        new QMainCouponDto(
+                                coupon.id,
+                                coupon.couponNm,
+                                coupon.discount)
+                )
+                .where(couponNmLike(couponSearchDto.getSearchQuery()))
+                .orderBy(coupon.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        long total = queryFactory
+                .select(Wildcard.count)
+                .where(couponNmLike(couponSearchDto.getSearchQuery()))
+                .fetchOne();
+
+        return new PageImpl<>(content, pageable, total);
+    }
 }

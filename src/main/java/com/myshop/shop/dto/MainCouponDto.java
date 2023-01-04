@@ -13,7 +13,7 @@ public class MainCouponDto {
     private Integer discount;
 
     @QueryProjection
-    public MainCouponDto(Long id, String couponNm, String couponDetail, Integer discount){
+    public MainCouponDto(Long id, String couponNm, Integer discount){
         this.id = id;
         this.couponNm = couponNm;
         this.discount = discount;
