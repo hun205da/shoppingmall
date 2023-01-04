@@ -27,7 +27,7 @@
                         <li class="icon"><a th:href="@{/admin/item/new}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></li>
                         <li class="icon"><a th:href="@{/admin/items}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-wrench" aria-hidden="true"></i></a></li>
                         <li class="icon"><a th:href="@{/orders}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-user"></i></a></li>
-                        <li class="icon"><a th:href="@{/cart}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-address-book-o" aria-hidden="true"></i></a></li><!--유저 관리-->
+                        <li class="icon"><a th:href="@{/layout/masterlist/masterlistGest}" sec:authorize="isAuthenticated()" style="color: #000;"><i class="fa fa-address-book-o" aria-hidden="true"></i></a></li><!--유저 관리-->
                         <li class="icon"><a th:href="@{/members/logout}" sec:authorize="isAuthenticated()" style="vertical-align: middle; font-size: 15px; white-space: nowrap;"><strong>로그아웃</strong></a></li>
                     </ul>
                 </div>

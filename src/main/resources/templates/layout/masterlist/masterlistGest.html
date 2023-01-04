@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<th:block th:replace="~{/layout/layout2 :: setContent(~{this::content} )}">
+
+    <th:block th:fragment="content">
+
+        <div class="container" style="margin-left:20%;margin-right:20%">
+            <form action="/layout/masterlist/masterlistGest" method="get" id="searchForm">
+                <div class="input-group">
+                    <input type="hidden" name="page" value="1">
+                    <div class="input-group-prepend">
+                        <select class="custom-select" name="type">
+                            <option th:selected="${pageRequestDTO.type==null}">----------</option>
+                            <option value="uemail" th:selected="${pageRequestDTO.type==uid}">이메일</option>
+                            <option value="uname" th:selected="${pageRequestDTO.type==upw}">이름</option>
+                            <option value="urole" th:selected="${pageRequestDTO.type==uname}">권한</option>
+                        </select>
+                        <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                        <div class="input-group-append" id="button-addon4">
+                            <button class="btn btn-outline-secondary btn-search" type="button">Searcch</button>
+                            <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <h2 class="mb-4">
+                유저목록
+            </h2>
+
+            <div>
+
+                <table class="table">
+                    <colgroup>
+                        <col width="50%"/>
+                        <col width="40%"/>
+                        <col width="10%"/>
+                    </colgroup>
+                    <thead>
+                    <tr class="text-center">
+                        <td>이메일</td>
+                        <td>이름</td>
+                        <td>권한</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="text-center" th:each="memberdto : ${memberdto.dtoList}">
+                        <td>[[${memberdto.email}]]</td>
+                        <td>[[${memberdto.name}]]</td>
+                        <td>[[${memberdto.role}]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <ul class="pagination h-100 justify-content-center align-items-center">
+                    <li class="page-item" th:if="${memberdto.prev}">
+                        <a class="page-link" th:href="@{/layout/masterlist/masterlistGest(page=${memberdto.start-1})}" tabindex="-1">Previous</a>
+                    </li>
+                    <li th:class=" 'page-item' + ${memberdto.page == page?'active':''} " th:each="page: ${memberdto.pageList}">
+                        <a class="page-link" th:href="@{/layout/masterlist/masterlistGest(page=${page})}">[[${page}]]</a>
+                    </li>
+                    <li class="page-item" th:if="${memberdto.next}">
+                        <a class="page-link" th:href="@{/layout/masterlist/masterlistGest(page=${memberdto.end+1})}" tabindex="+1">Next</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <style>
+        .content-mg{
+            margin-left:25%;
+            margin-right:25%;
+            margin-top:2%;
+            margin-bottom:100px;
+        }
+        .repImgDiv{
+            margin-right:15px;
+            margin-left:15px;
+            height:auto;
+        }
+        .repImg{
+            height:100px;
+            width:100px;
+        }
+        .fs18{
+            font-size:18px
+        }
+        .fs24{
+            font-size:24px
+        }
+    </style>
+        <script th:inline="javascript">
+    var searchForm= $("#searchForm");
+    $('.btn-search').click(function(e){
+        searchForm.submit();
+    });
+    $('.btn-clear').click(function(e){
+        searchForm.empty().submit();
+    });
+</script>
+
+    </th:block>
+
+</th:block>
