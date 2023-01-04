@@ -1,63 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
 
-<th:block th:replace="~{/layout/layout1 :: setContent(~{this::text} )}">
+<body>
 
-  <th:block th:fragment="text">
+  <div class="bg">
 
-    <div class="container">
-      <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active item">
+    <div class="img">
 
-          </div>
-        </div>
-      </div>
-
-      <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
-      <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
-        <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
-      </div>
-
-      <div class="row">
-        <th:block th:each="item, status: ${items.getContent()}">
-          <div class="col-md-4 margin">
-            <div class="card">
-              <a th:href="'/item/' +${item.id}" class="text-dark">
-                <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}" height="400">
-                <div class="card-body">
-                  <h4 class="card-title">[[${item.itemNm}]]</h4>
-                  <p class="card-text">[[${item.itemDetail}]]</p>
-                  <h3 class="card-title text-danger">[[${item.price}]]원</h3>
-                </div>
-              </a>
+        <div class="dropdown">
+            <i class="fa fa-bars dropbtn" onclick="myFunction()"></i>
+            <div id="myDropdown" class="dropdown-content">
+                <a th:href="@{members/login}" sec:authorize="isAnonymous()">로그인</a>
+                <a th:href="@{members/new}" sec:authorize="isAnonymous()">회원가입</a>
+                <a th:href="@{members/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
+                <a th:href="@{cart}" sec:authorize="isAuthenticated()">장바구니</a>
+                <a th:href="@{orders}" sec:authorize="isAuthenticated()">구매이력</a>
+                <a th:href="@{cs/main}">고객센터</a>
             </div>
-          </div>
-        </th:block>
-      </div>
+        </div>
+        <div id="m">
+              <img class="logo" src="/img/1.png">
+            <form class="form-inline my-2 my-lg-0" th:action="@{/list}" method="get">
 
-      <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
-        <ul class="pagination justify-content-center">
+                <div class="search-mode">
+                    <i class="fa fa-search"></i><input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력해주세요." aria-label="Search">
+                </div>
 
-          <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
-            <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
-              <span aria-hidden='true'>Previous</span>
-            </a>
-          </li>
+</form>
+  </div>
+  </div>
+  <script th:inline="javascript">
 
-          <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
-            <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
-          </li>
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-          <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
-            <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
-              <span aria-hidden='true'>Next</span>
-            </a>
-          </li>
 
-        </ul>
-      </div>
-    </div>
-  </th:block>
-</th:block>
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+              myDropdown.classList.remove('show');
+            }
+          }
+        }
+</script>
+</body>
 </html>
+

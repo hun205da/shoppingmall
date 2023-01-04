@@ -4,8 +4,10 @@ import com.myshop.shop.dto.CsDTO;
 import com.myshop.shop.dto.PageRequestDTO;
 import com.myshop.shop.dto.PageResultDTO;
 import com.myshop.shop.entity.Cs;
+import com.myshop.shop.entity.Member;
 
 public interface CsService {
+
 
     Long register(CsDTO dto);
 
@@ -26,7 +28,6 @@ public interface CsService {
                 .category(dto.getCategory())
                 .text(dto.getText())
                 .reply(dto.getReply())
-                .userId(dto.getUserId())
                 .build();
         return entity;
     }
@@ -39,7 +40,6 @@ public interface CsService {
                 .category(entity.getCategory())
                 .text(entity.getText())
                 .reply(entity.getReply())
-                .userId(entity.getUserId())
                 .regDate(entity.getRegTime())
                 .modDate(entity.getUpdateTime())
                 .build();

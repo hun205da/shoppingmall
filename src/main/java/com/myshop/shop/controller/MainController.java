@@ -20,11 +20,11 @@ public class MainController {
     private final ItemService itemService;
 
     @GetMapping(value = "/")
-    public String basic(){
-        return "basic";
+    public String main(){
+        return "main";
     }
     //메인 페이지 상품 데이터 출력
-    @GetMapping(value = "basic")
+    @GetMapping(value = "list")
     public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
         Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
@@ -34,7 +34,7 @@ public class MainController {
         model.addAttribute("itemSearchDto", itemSearchDto);
         model.addAttribute("maxPage", 5);
 
-        return "main";
+        return "item/itemList";
     }
 
 }

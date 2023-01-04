@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:replace="~{/layout/layout1 :: setContent(~{this::content} )}">
 
@@ -8,7 +9,7 @@
         <h1 class="mt-4">FAQ 페이지
             <span>
                 <a th:href="@{/faq/register}">
-                    <button type="button" class="btn btn-outline-primary">FAQ 등록
+                    <button type="button" class="btn btn-outline-primary" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">FAQ 등록
                     </button>
                 </a>
             </span>

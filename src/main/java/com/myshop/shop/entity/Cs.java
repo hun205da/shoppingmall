@@ -23,8 +23,9 @@ public class Cs extends BaseEntity {
     @Column(length = 1500, nullable = true)
     private String text;
 
-    @Column(length = 50, nullable = true)
-    private String userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @Column(length = 50, nullable = true)
     private String category;
@@ -43,6 +44,8 @@ public class Cs extends BaseEntity {
     public void changeReply(String reply) { this.reply = reply; }
 
     public void changeCategory(String category) { this.category = category; }
+
+
 }
 
 
